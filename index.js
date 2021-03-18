@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
+import path from 'path';
 const app = express();
 const port = 5000;
-import path from 'path';
 const uri = process.env.DB_HOST;
+
+dotenv.config();
 app.use(express.static('static'));
 
 app.set('view engine', 'ejs');
@@ -16,6 +17,7 @@ app.listen(port, () => {
 
 app.get('/', (req, res) => {
 	res.send('hello');
+	logUser();
 });
 
 mongoose
