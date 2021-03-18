@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node index",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "sass --watch static/stylesheets/scss/main.scss static/stylesheets/css/main.css"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "eslint": "^7.22.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sass": "^1.32.8"
   }
 }
