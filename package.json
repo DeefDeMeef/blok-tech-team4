@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "blok-tech-team4",
   "version": "1.0.0",
   "description": "Matching application for Blok Tech (Team 4)",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "eslint": "^7.22.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
   }
 }
