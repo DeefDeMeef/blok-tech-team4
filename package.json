@@ -4,7 +4,8 @@
   "description": "Matching application for Blok Tech (Team 4)",
   "main": "index.js",
   "scripts": {
-    "test": "node index"
+    "test": "node index",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
