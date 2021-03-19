@@ -52,6 +52,8 @@ web_modules/
 
 # Optional eslint cache
 .eslintcache
+.eslintrc.json
+.prettierrc
 
 # Microbundle cache
 .rpt2_cache/
