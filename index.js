@@ -6,8 +6,10 @@ const mongoose = require(`mongoose`);
 const app = express();
 const uri = process.env.DB_HOST;
 const profileRoutes = require('./routes/profileRoutes')
+const urlencoded = express.urlencoded({extended:true});
 app.use(express.static(`static`));
 app.use(profileRoutes);
+app.use(urlencoded);
 
 app.set(`view engine`, `ejs`);
 
@@ -32,7 +34,6 @@ mongoose.
   // path
 const path = require(`path`);
 // body parser - voor post requests
-const bodyParser = require(`body-parser`);
 
 // database Model
 const User = require(`./models/user`);
@@ -110,19 +111,7 @@ app.get(`*`, (request, response) => {
   response.send(`NOPE 404`, 404);
 });
 
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
 
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: false
-  })
-);
 
 app.post(`/registered`, async (request, response) => {
   try {
