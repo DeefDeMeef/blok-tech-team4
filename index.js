@@ -34,7 +34,6 @@ const bodyParser = require('body-parser');
 // Database Model
 const User = require('./models/user');
 
-// bcrypt
 const bcrypt = require('bcrypt');
 
 // Passport - initialize is wat er meegenomen moet worden in de sessie
