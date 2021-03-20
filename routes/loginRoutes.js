@@ -1,49 +1,13 @@
 require(`dotenv/config`);
 const express = require('express');
-const router = express.Router();
 const app = express();
 const flash = require(`express-flash`);
 const session = require(`express-session`);
-
-const magIk = (request, response, next) => {
-  if (request.isAuthenticated()) {
-    return next();
-  }
-  request.flash(`error`);
-  response.redirect(`login`);
-};
-// flash ophalen
-app.use(flash());
-
-// routes: register_get, register_post, login_get, login_post, 
-// routes
-app.get(`/login`, (request, response) => {
-    response.render(`login`);
-  });
-  
-  app.get(`/register`, (request, response) => {
-    response.render(`register`);
-  });
-
-  app.get(`*`, (request, response) => {
-    response.send(`NOPE 404`, 404);
-  });
-  
-  app.get(`/`, magIk, (request, response) => {
-    response.render(`index`, {
-      name: request.user.name
-    });
-  });
-
-  app.get(`/logout`, (request, response) => {
-    request.logout();
-    response.redirect(`login`);
-  });
-
+require('../controllers/connection');
 
   // path
   const path = require(`path`);
-  // body parser - voor post requests
+  // body parser - voor post reqs
   const bodyParser = require(`body-parser`);
   
   // database Model
@@ -61,7 +25,15 @@ app.get(`/login`, (request, response) => {
   );
   
   // flash
-  
+  const magIk = (req, res, next) => {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    req.flash(`error`);
+    res.redirect(`login`);
+  };
+  // flash ophalen
+  app.use(flash());
   // session gegevens meegeven/ installen
   app.use(
     session({
@@ -90,15 +62,40 @@ app.get(`/login`, (request, response) => {
     })
   );
   
-  app.post(`/registered`, async (request, response) => {
+// routes
+app.get('/login', (req, res) => {
+    res.render('login');
+  });
+  
+  app.get(`/register`, (req, res) => {
+    res.render(`register`);
+  });
+
+  app.get(`*`, (req, res) => {
+    res.send(`NOPE 404`, 404);
+  });
+  
+  app.get('/', magIk, (req, res) => {
+    res.render('index', {
+      name: req.user.name
+    });
+  });
+
+  app.get(`/logout`, (req, res) => {
+    req.logout();
+    res.redirect(`login`);
+  });
+
+
+  app.post(`/registered`, async (req, res) => {
     try {
-      request.body.password = bcrypt.hashSync(request.body.password, 10);
-      const user = new User(request.body);
-      console.log(request.body);
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
+      const user = new User(req.body);
+      console.log(req.body);
       const result = await user.save();
-      response.redirect(`login`);
+      res.redirect(`login`);
     } catch (error) {
-      response.status(500).send(error);
+      res.status(500).send(error);
     }
   });
   
@@ -111,28 +108,28 @@ app.get(`/login`, (request, response) => {
     })
   );
 
-  // app.post(`/delete`, async (request, response) => {
+  // app.post(`/delete`, async (req, res) => {
 //   try {
 //     const user = await User.findOneAndDelete({
-//       username: request.body.username
+//       username: req.body.username
 //     }).exec();
 //     if (!user) {
-//       return response.
+//       return res.
 //         status(400).
 //         send({ message: `De gebruikersnaam bestaat niet` });
 //     }
-//     response.redirect(`register`);
+//     res.redirect(`register`);
 //   } catch (error) {
-//     response.status(500).send(error);
+//     res.status(500).send(error);
 //   }
 // });
 
-// app.post(`/change`, magIk, async (request, respond) => {
+// app.post(`/change`, magIk, async (req, respond) => {
 //   try {
-//     request.body.password = bcrypt.hashSync(request.body.password, 10);
-//     const filter = { username: request.user.username };
-//     const user = await User.findOne({ username: request.user.username });
-//     await User.updateOne(filter, { password: request.body.password });
+//     req.body.password = bcrypt.hashSync(req.body.password, 10);
+//     const filter = { username: req.user.username };
+//     const user = await User.findOne({ username: req.user.username });
+//     await User.updateOne(filter, { password: req.body.password });
 //     await user.save().then(() => {
 //       respond.redirect(`/`);
 //     });
@@ -143,4 +140,4 @@ app.get(`/login`, (request, response) => {
 
 
 
-  module.exports = router;
+  module.exports = app;
