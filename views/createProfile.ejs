@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maak je profiel aan</title>
+  </head>
+  <body>
+    <header>
+      <h1>Maak je profiel compleet</h1>
+      <h3>Vul deze gegevens in en start met liken</h3>
+    </header>
+    <main class="createProfile">
+      <form action="/createProfile" method="POST" enctype="multipart/form-data">
+        <div>
+          <label for="name"> Naam </label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <label for="sports">Welke sporten vind je leuk?</label>
+        <fieldset>
+          <legend>Vink aan wat je leuk vindt</legend>
+
+          <ul class="sportsList">
+            <li class="sport">
+              <input
+                type="checkbox"
+                name="sport"
+                id="checkbox1"
+                value="voetbal"
+              />
+              <label for="chekcbox1">Voetbal</label>
+            </li>
+            <li class="sport">
+              <input
+                type="checkbox"
+                name="sport"
+                id="checkbox2"
+                value="Hockey"
+              />
+              <label for="checkbox2">Hockey</label>
+            </li>
+            <li class="sport">
+              <input
+                type="checkbox"
+                name="sport"
+                id="checkbox3"
+                value="Basketbal"
+              />
+              <label for="checkbox3"> Basketbal</label>
+            </li>
+            <li class="sport">
+              <input
+                type="checkbox"
+                name="sport"
+                id="checkbox4"
+                value="Tennis"
+              /><label for="checkbox4">Tennis</label>
+            </li>
+          </ul>
+          <div class="addSport">
+            <label for="addSport">Voeg jouw sport toe</label>
+            <input type="text" id="addSport" name="addSport" />
+          </div>
+        </fieldset>
+        <div class="bio">
+          <label for="bio">Vertel iets over jezelf</label>
+          <textarea name="bio" id="bio"></textarea>
+        </div>
+        <div class="upload">
+          <label for="upload">Upload je foto</label>
+          <input
+            type="file"
+            name="upload"
+            id="upload"
+            placeholder="Kies bestand"
+            accept="image/png, image/jpeg, image/gif"
+          />
+        </div>
+        <button>Opslaan</button>
+      </form>
+    </main>
+  </body>
+</html>
