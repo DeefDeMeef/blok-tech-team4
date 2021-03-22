@@ -2,7 +2,7 @@ require(`dotenv/config`);
 const mongoose = require(`mongoose`);
 const uri = process.env.DB_HOST;
 
-//establishing connection
+// establishing connection
 mongoose
   .connect(uri, {
     useNewUrlParser: true,

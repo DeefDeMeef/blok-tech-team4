@@ -11,6 +11,6 @@ router.post(
   profileController.postCreateProfile
 );
 
-router.get(`/profile`, profileController.getProfile);
+router.get(`/profile/:profileId`, profileController.getProfile);
 
 module.exports = router;

@@ -10,13 +10,20 @@ exports.postCreateProfile = async (req, res) => {
   try {
     console.log(req.body);
     const newProfile = new Profile(req.body);
-    await newProfile.save();
-    res.redirect(`/profile`);
+    newProfile.save().then((profile) => {
+      console.log(profile);
+      res.redirect(`/profile/${profile._id}`);
+    });
   } catch (err) {
     console.log(err);
   }
 };
 
-exports.getProfile = (req, res) => {
-  res.render(`profile`);
+exports.getProfile = async (req, res) => {
+  const findUser = await Profile.findById(req.params.profileId).then(
+    (result) => result
+  );
+  res.render(`profile`, {
+    profile: findUser,
+  });
 };

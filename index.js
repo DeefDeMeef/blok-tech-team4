@@ -18,3 +18,7 @@ const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+app.use((req, res) => {
+  res.status(404).send(`does not exist`);
+});
