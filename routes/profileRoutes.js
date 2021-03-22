@@ -1,12 +1,16 @@
-const express = require('express');
+const express = require(`express`);
 const router = express.Router();
+const profileController = require(`../controllers/profileController`);
+const upload = require(`../controllers/util/upload`);
 
-router.get('/create', (req,res) =>{
-    res.render('createProfile')
-})
+router.get(`/create`, profileController.getCreateProfile);
 
-router.post('/create',(req,res)=>{
-    console.log(req.body);
-});
+router.post(
+  `/create`,
+  upload.single(`upload`),
+  profileController.postCreateProfile
+);
+
+router.get(`/profile`, profileController.getProfile);
 
 module.exports = router;

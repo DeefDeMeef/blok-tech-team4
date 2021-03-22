@@ -1,15 +1,16 @@
 require(`dotenv/config`);
 const mongoose = require(`mongoose`);
 const uri = process.env.DB_HOST;
-mongoose.
-  connect(uri, {
+
+//establishing connection
+mongoose
+  .connect(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-  }).
-  then(() => {
+    useUnifiedTopology: true,
+  })
+  .then(() => {
     console.log(`connected to mongo`);
-  }).
-  catch(err => {
+  })
+  .catch((err) => {
     console.log(err);
   });
-
