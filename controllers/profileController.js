@@ -1,4 +1,5 @@
 const Profile = require(`../models/userProfile`);
+const User = require(`../models/user`);
 
 // get_createProfile, post_createProfile, get_profile
 
@@ -6,12 +7,12 @@ exports.getCreateProfile = (req, res) => {
   res.render(`createProfile`);
 };
 
-exports.postCreateProfile = async (req, res) => {
+exports.postCreateProfile = (req, res) => {
   try {
     console.log(req.body);
     const newProfile = new Profile(req.body);
     newProfile.save().then((profile) => {
-      console.log(profile);
+      console.log(profile._id);
       res.redirect(`/profile/${profile._id}`);
     });
   } catch (err) {
@@ -20,10 +21,12 @@ exports.postCreateProfile = async (req, res) => {
 };
 
 exports.getProfile = async (req, res) => {
-  const findUser = await Profile.findById(req.params.profileId).then(
-    (result) => result
+  const findProfile = await Profile.findById(req.params.profileId).then(
+    (profile) => profile
   );
   res.render(`profile`, {
-    profile: findUser,
+    profile: findProfile,
   });
 };
+
+exports.editProfile;

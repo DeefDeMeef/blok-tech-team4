@@ -15,10 +15,6 @@ const UserForm = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  sex: {
-    type: String,
-    require: true,
-  },
 });
 
 UserForm.plugin(passportLocalMongoose);

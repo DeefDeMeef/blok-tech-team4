@@ -5,6 +5,10 @@ const userProfileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sex: {
+    type: String,
+    require: true,
+  },
   sports: {
     type: Array,
     required: true,
