@@ -10,6 +10,10 @@ app.set(`view engine`, `ejs`);
 const profileRoutes = require(`./routes/profileRoutes`);
 app.use(profileRoutes);
 
+// filter routes
+const filterRoutes = require(`./routes/filterRoutes`);
+app.use(filterRoutes);
+
 // login routes
 const loginRoutes = require(`./routes/loginRoutes`);
 app.use(loginRoutes);
