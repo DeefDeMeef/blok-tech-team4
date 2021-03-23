@@ -3,7 +3,10 @@ const router = express.Router();
 const profileController = require(`../controllers/profileController`);
 const upload = require(`../controllers/util/upload`);
 
-router.get(`/create`, profileController.getCreateProfile);
+router
+  .get(`/create`, profileController.getCreateProfile)
+  .get(`/profile/:profileId`, profileController.getProfile)
+  .get(`/edit/:profileId`, profileController.editProfile);
 
 router.post(
   `/create`,
@@ -11,6 +14,10 @@ router.post(
   profileController.postCreateProfile
 );
 
-router.get(`/profile/:profileId`, profileController.getProfile);
+router.post(
+  `/profile/:profileId`,
+  upload.single(),
+  profileController.updateProfile
+);
 
 module.exports = router;
