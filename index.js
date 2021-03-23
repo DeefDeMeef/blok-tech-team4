@@ -1,33 +1,24 @@
-import dotenv from 'dotenv';
-import express from 'express';
-import mongoose from 'mongoose';
-import path from 'path';
+const express = require(`express`);
+require(`./controllers/connection`);
 const app = express();
-const port = 5000;
-const uri = process.env.DB_HOST;
+const urlencoded = express.urlencoded({ extended: true });
 
-dotenv.config();
-app.use(express.static('static'));
+app.use(express.static(`static`)).use(urlencoded);
+app.set(`view engine`, `ejs`);
 
-app.set('view engine', 'ejs');
+// profile routes
+const profileRoutes = require(`./routes/profileRoutes`);
+app.use(profileRoutes);
 
+// login routes
+const loginRoutes = require(`./routes/loginRoutes`);
+app.use(loginRoutes);
+
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
-	console.log(`listening at port ${port}`);
+  console.log(`Example app listening at http://localhost:${port}`);
 });
 
-app.get('/', (req, res) => {
-	res.send('hello');
-	logUser();
+app.use((req, res) => {
+  res.status(404).send(`does not exist`);
 });
-
-mongoose
-	.connect(uri, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => {
-		console.log('connected to mongo');
-	})
-	.catch((err) => {
-		console.log(err);
-	});

@@ -53,6 +53,7 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 .eslintrc.json
+.prettierrc
 
 # Microbundle cache
 .rpt2_cache/
@@ -115,3 +116,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# img/tmp directory
+static/uploads/

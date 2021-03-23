@@ -1,32 +1,27 @@
-import mongoose from 'mongoose';
+const mongoose = require(`mongoose`);
+const passportLocalMongoose = require(`passport-local-mongoose`);
 
-const userSchema = mongoose.Schema({
-	name: {
-		type: String,
-		required: true,
-	},
-	birthdate: {
-		type: String,
-		required: true,
-	},
-	email: {
-		type: String,
-		required: true,
-	},
-	hobbies: {
-		type: Array,
-		required: true,
-	},
-	bio: {
-		type: String,
-	},
-	img: {
-		type: String,
-	},
+const UserForm = new mongoose.Schema({
+  email: {
+    type: String,
+
+    require: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    require: true,
+  },
+  age: {
+    type: Number,
+    require: true,
+  },
 });
 
-export default mongoose.model(
-	'user',
-	userSchema,
-	console.log('User model loaded')
+// userForm.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model(
+  `user`,
+  UserForm,
+  console.log(`user model loaded`)
 );

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body class="login">
+    <main>
+      <section>
+        <h1>Registreren</h1>
+        <form method="POST" action="/registered">
+          <section class="basic-info">
+            <h3>Vul hier je basisgegevens in</h3>
+            <ul>
+              <li>
+                <label for="email">Email-adres</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="example@example.nl"
+                  required
+                />
+              </li>
+              <li>
+                <label for="password">Wachtwoord</label>
+                <input type="text" name="password" id="password" required />
+              </li>
+              <li>
+                <label for="birthdate">Geboortedatum</label>
+                <input type="date" name="birthdate" id="birthdate" required />
+              </li>
+              <li>
+                <label for="man">man</label>
+                <input type="radio" name="sex" id="man" value="man" required />
+                <label for="vrouw">vrouw</label>
+                <input
+                  type="radio"
+                  name="sex"
+                  id="vrouw"
+                  value="vrouw"
+                  required
+                />
+              </li>
+            </ul>
+          </section>
+          <button type="submit">Maak account aan</button>
+        </form>
+        <p class="berichtje">
+          Al een account? <a class="linkje" href="/login">log in!</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
