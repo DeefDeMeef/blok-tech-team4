@@ -6,5 +6,36 @@
     <meta name="viewport" content="width=\, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body class="login">
+    <main>
+      <section>
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+          <section class="basic-info">
+            <h3>Vul hier je basisgegevens in</h3>
+            <ul>
+              <li>
+                <label for="email">Email-adres</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="example@example.nl"
+                  required
+                />
+              </li>
+              <li>
+                <label for="password">Wachtwoord</label>
+                <input type="password" name="password" id="password" required />
+              </li>
+            </ul>
+          </section>
+          <button type="submit">Login</button>
+        </form>
+        <p class="berichtje">
+          Nog geen account <a class="linkje" href="/register">Maak één!</a>
+        </p>
+      </section>
+    </main>
+  </body>
 </html>

@@ -20,7 +20,7 @@ const passport = require(`passport`);
 const initializePassport = require(`../controllers/passport-config`);
 initializePassport(
   passport,
-  (username) => users.find((user) => user.username === username),
+  (email) => users.find((user) => user.email === email),
   (id) => users.find((user) => user.id === id)
 );
 
@@ -70,10 +70,6 @@ app.get(`/register`, (req, res) => {
   res.render(`register`);
 });
 
-app.get(`*`, (req, res) => {
-  res.send(`NOPE 404`, 404);
-});
-
 app.get(`/`, magIk, (req, res) => {
   res.render(`index`, {
     name: req.user.name,
@@ -83,6 +79,10 @@ app.get(`/`, magIk, (req, res) => {
 app.get(`/logout`, (req, res) => {
   req.logout();
   res.redirect(`login`);
+});
+
+app.get(`*`, (req, res) => {
+  res.send(`NOPE 404`, 404);
 });
 
 app.post(`/registered`, async (req, res) => {
