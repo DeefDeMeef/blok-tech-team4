@@ -20,8 +20,8 @@ const userProfileSchema = new mongoose.Schema({
     type: String,
   },
   likes: {
-    type: [{ String }],
-    default: undefined,
+    type: Array,
+    default: [],
   },
 });
 

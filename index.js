@@ -2,6 +2,7 @@ const express = require(`express`);
 require(`./controllers/connection`);
 const app = express();
 const urlencoded = express.urlencoded({ extended: true });
+const User = require(`./models/user`);
 
 app.use(express.static(`static`)).use(urlencoded);
 app.set(`view engine`, `ejs`);

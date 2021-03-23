@@ -8,16 +8,18 @@ exports.getCreateProfile = (req, res) => {
 };
 
 exports.postCreateProfile = (req, res) => {
-  try {
-    console.log(req.body);
-    const newProfile = new Profile(req.body);
-    newProfile.save().then((profile) => {
-      console.log(profile._id);
-      res.redirect(`/profile/${profile._id}`);
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  console.log(req.body, req.file);
+  const newProfile = new Profile({
+    name: req.body.name,
+    sex: req.body.sex,
+    sports: req.body.sports,
+    bio: req.body.bio,
+    upload: req.file.filename,
+  });
+  newProfile.save().then((profile) => {
+    console.log(profile._id);
+    res.redirect(`/profile/${profile._id}`);
+  });
 };
 
 exports.getProfile = async (req, res) => {

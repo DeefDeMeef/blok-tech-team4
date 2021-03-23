@@ -4,6 +4,7 @@ const passportLocalMongoose = require(`passport-local-mongoose`);
 const UserForm = new mongoose.Schema({
   email: {
     type: String,
+
     require: true,
     unique: true,
   },
@@ -17,12 +18,10 @@ const UserForm = new mongoose.Schema({
   },
 });
 
-UserForm.plugin(passportLocalMongoose);
+// userForm.plugin(passportLocalMongoose);
 
-const Users = mongoose.model(
-  `Users`,
+module.exports = mongoose.model(
+  `user`,
   UserForm,
   console.log(`user model loaded`)
 );
-
-module.exports = Users;
