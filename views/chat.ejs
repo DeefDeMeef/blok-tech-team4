@@ -8,6 +8,13 @@
 </head>
 <body>
     <p><%= name %></p>
+
+    <% otherUsers.forEach((otherUsers, index) => { %>
+        <article style="display: none;">
+            <p>id: <%= otherUsers._id %></p>
+            <p>mail: <%= otherUsers.email %></p>
+        </article>
+        <% }) %>
     <div id="message-box"></div>
     <form id="send-container">
         <input type="text" id="message-input">

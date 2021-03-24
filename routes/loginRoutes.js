@@ -97,11 +97,26 @@ app.get(`/logout`, (req, res) => {
   res.redirect(`login`);
 });
 
-app.get(`/chat`, magIk, (req, res) => {
-  res.render(`chat`, {
-    title: "chat",
-    name: req.session.userEmail
-  });
+app.get(`/chat`, magIk, async (req, res) => {
+  try{
+    //Vind de gebruiker die inlogd is
+    await User.find({ email: req.session.userEmail},'_id email', async (err, obj) => {
+      console.log(obj)
+      if (obj) {
+        //Vind alle gebruikers != ingelogde user
+        await User.find({ email: {$ne: req.session.userEmail}},'_id email ', async (err, obj2) => {
+          console.log(obj2)
+          res.render(`chat`, {
+            title: "chat",
+            name: req.session.userEmail,
+            otherUsers: obj2
+          });
+        })
+      }
+    })
+  }catch (error) {
+    console.log(error)
+  }
 });
 
 app.get(`*`, (req, res) => {

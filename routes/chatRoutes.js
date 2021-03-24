@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require("mongoose");
 const router = express.Router();
 require(`../controllers/connection`);
+
 const io = require('socket.io')(4000, {
     cors:{
         origin:"*",
@@ -11,20 +12,6 @@ const io = require('socket.io')(4000, {
 const User = require(`../models/user`);
 
 const users = {}
-
-// let clientSocketIds = [];
-// let connectedUsers= [];
-
-// const getSocketByUserId = (userId) =>{
-//     let socket = '';
-//     for(let i = 0; i<clientSocketIds.length; i++) {
-//         if(clientSocketIds[i].userId == userId) {
-//             socket = clientSocketIds[i].socket;
-//             break;
-//         }
-//     }
-//     return socket;
-// }
 
 io.on('connection', socket => {
     socket.on('new-user', name => {
