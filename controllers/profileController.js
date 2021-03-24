@@ -17,7 +17,7 @@ exports.postCreateProfile = (req, res) => {
     upload: req.file.filename,
   });
   newProfile.save().then((profile) => {
-    console.log(profile._id);
+    console.log(req.session.userEmail);
     res.redirect(`/profile/${profile._id}`);
   });
 };

@@ -4,6 +4,7 @@ const app = express();
 const flash = require(`express-flash`);
 const session = require(`express-session`);
 require(`../controllers/connection`);
+const profileController = require(`../controllers/profileController`);
 
 // path
 const path = require(`path`);
@@ -13,18 +14,21 @@ const bodyParser = require(`body-parser`);
 // database Model
 const User = require(`../models/user`);
 
-try{
-  User.collection.findOne({
-    email: "davey@test.nl"
-  }, async function (err, obj) {
-    if (!obj) {
-      console.log("Bestaat niet!")
-    } else {
-        console.log("Bestaat jonge!")
+try {
+  User.collection.findOne(
+    {
+      email: `davey@test.nl`,
+    },
+    async (err, obj) => {
+      if (!obj) {
+        console.log(`Bestaat niet!`);
+      } else {
+        console.log(`Bestaat jonge!`);
+      }
     }
-  })
-}catch (error) {
-  console.log(error)
+  );
+} catch (error) {
+  console.log(error);
 }
 
 const bcrypt = require(`bcrypt`);
@@ -44,10 +48,12 @@ const magIk = (req, res, next) => {
     return next();
   }
   req.flash(`error`);
-  res.redirect(`login`);
+  res.redirect(`/login`);
 };
+
 // flash ophalen
 app.use(flash());
+
 // session gegevens meegeven/ installen
 app.use(
   session({
@@ -87,8 +93,8 @@ app.get(`/register`, (req, res) => {
 app.get(`/`, magIk, (req, res) => {
   req.session.userEmail = req.user.email;
   res.render(`index`, {
-    title: "Dashboard",
-    name: req.session.userEmail
+    title: `Dashboard`,
+    name: req.session.userEmail,
   });
 });
 
@@ -98,26 +104,39 @@ app.get(`/logout`, (req, res) => {
 });
 
 app.get(`/chat`, magIk, async (req, res) => {
-  try{
-    //Vind de gebruiker die inlogd is
-    await User.find({ email: req.session.userEmail},'_id email', async (err, obj) => {
-      console.log(obj)
-      if (obj) {
-        //Vind alle gebruikers != ingelogde user
-        await User.find({ email: {$ne: req.session.userEmail}},'_id email ', async (err, obj2) => {
-          console.log(obj2)
-          res.render(`chat`, {
-            title: "chat",
-            name: req.session.userEmail,
-            otherUsers: obj2
-          });
-        })
+  try {
+    // vind de gebruiker die inlogd is
+    await User.find(
+      { email: req.session.userEmail },
+      `_id email`,
+      async (err, obj) => {
+        console.log(obj);
+        if (obj) {
+          // vind alle gebruikers != ingelogde user
+          await User.find(
+            { email: { $ne: req.session.userEmail } },
+            `_id email `,
+            async (err, obj2) => {
+              console.log(obj2);
+              res.render(`chat`, {
+                title: `chat`,
+                name: req.session.userEmail,
+                otherUsers: obj2,
+              });
+            }
+          );
+        }
       }
-    })
-  }catch (error) {
-    console.log(error)
+    );
+  } catch (error) {
+    console.log(error);
   }
 });
+
+app
+  .get(`/profile/create`, magIk, profileController.getCreateProfile)
+  .get(`/profile/:profileId`, magIk, profileController.getProfile)
+  .get(`/edit/:profileId`, magIk, profileController.editProfile);
 
 app.get(`*`, (req, res) => {
   res.send(`NOPE 404`, 404);
