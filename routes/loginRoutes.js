@@ -13,6 +13,20 @@ const bodyParser = require(`body-parser`);
 // database Model
 const User = require(`../models/user`);
 
+try{
+  User.collection.findOne({
+    email: "davey@test.nl"
+  }, async function (err, obj) {
+    if (!obj) {
+      console.log("Bestaat niet!")
+    } else {
+        console.log("Bestaat jonge!")
+    }
+  })
+}catch (error) {
+  console.log(error)
+}
+
 const bcrypt = require(`bcrypt`);
 
 // passport - initialize is wat er meegenomen moet worden in de sessie
@@ -71,14 +85,23 @@ app.get(`/register`, (req, res) => {
 });
 
 app.get(`/`, magIk, (req, res) => {
+  req.session.userEmail = req.user.email;
   res.render(`index`, {
-    name: req.user.name,
+    title: "Dashboard",
+    name: req.session.userEmail
   });
 });
 
 app.get(`/logout`, (req, res) => {
   req.logout();
   res.redirect(`login`);
+});
+
+app.get(`/chat`, magIk, (req, res) => {
+  res.render(`chat`, {
+    title: "chat",
+    name: req.session.userEmail
+  });
 });
 
 app.get(`*`, (req, res) => {

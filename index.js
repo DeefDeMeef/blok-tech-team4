@@ -15,6 +15,10 @@ app.use(profileRoutes);
 const loginRoutes = require(`./routes/loginRoutes`);
 app.use(loginRoutes);
 
+// chat routes
+const chatRoutes = require('./routes/chatRoutes');
+app.use(chatRoutes);
+
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
