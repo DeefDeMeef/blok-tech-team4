@@ -43,4 +43,192 @@ table {
   border-spacing: 0;
 }
 
+/* Remove all default styles */
+a {
+  text-decoration: none;
+}
+
+/* SOURCE FONTS https://freefontsfamily.com/futura-font-family-free/ */
+@font-face {
+  font-family: "futuralight";
+  src: url("../fonts/futura_light_bt-webfont.woff2") format("woff2"), url("../fonts/futura_light_bt-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura Condensed";
+  src: url("../fonts/FuturaCondensedPlain.woff2") format("woff2"), url("FuturaCondensedPlain.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Body */
+/* Buttons */
+/* Body */
+body {
+  background: linear-gradient(0deg, #343737 0%, #0a0a09 100%);
+  background-repeat: no-repeat;
+  color: #ffffff;
+  width: auto;
+  height: 200vw;
+  /* Setions */
+  /* Forms */
+}
+body section {
+  margin-top: 3em;
+}
+body form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body form ul {
+  padding: 0;
+}
+body form li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5em;
+}
+body form li:last-child {
+  justify-content: space-evenly;
+}
+body form input:not([type=radio]) {
+  width: 70vw;
+}
+body form a {
+  display: block;
+  padding: 6px 12px;
+}
+
+/* Buttons */
+button:enabled {
+  background-color: #000000;
+  color: #ffffff;
+  border-style: none;
+  width: 50vw;
+  padding: 1.5em;
+  font-family: futuralight;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  border-radius: 0.2em;
+  text-transform: uppercase;
+}
+button:enabled:hover {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+}
+button:enabled:active {
+  background-color: linear-gradient 0deg, #cb2f4f 0%, #c32a4b 100%;
+}
+button:enabled:focus {
+  background-color: #000000;
+  box-shadow: inset 0 0 1px #ffffff00;
+}
+button:enabled:disabled {
+  background-color: #000000;
+}
+
+.register h1 {
+  font-family: futura;
+  letter-spacing: 0.2em;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 1em;
+  text-align: center;
+  margin: 0;
+}
+
+.register h3 {
+  font-family: futuralight;
+  letter-spacing: 0.2em;
+  font-size: 1em;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 3em;
+  margin-top: -2em;
+}
+
+.register label {
+  font-family: futuralight;
+  font-size: 1em;
+  font-weight: lighter;
+  padding-bottom: 0.5em;
+  letter-spacing: 0.2em;
+}
+
+.register input {
+  border-style: none;
+  background-color: white;
+  padding: 1em;
+  text-align: center;
+  margin: 0.2em;
+  border-radius: 0.2em;
+  color: grey;
+  letter-spacing: 0.2em;
+}
+
+p {
+  font-family: futuralight;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
+  line-height: 2em;
+  margin-top: 2em;
+}
+
+p a {
+  color: white;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.3em;
+}
+
+/*
+==========================================
+LOGIN PAGE
+==========================================
+*/
+.login section {
+  margin-top: 3em;
+}
+
+.login h1 {
+  font-family: futura;
+  letter-spacing: 0.2em;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 1em;
+  text-align: center;
+  margin: 0;
+}
+
+.login h3 {
+  font-family: futuralight;
+  letter-spacing: 0.2em;
+  font-size: 1em;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 3em;
+  margin-top: -2em;
+}
+
+.login label {
+  font-family: futuralight;
+  font-size: 1em;
+  font-weight: lighter;
+  padding-bottom: 0.5em;
+  letter-spacing: 0.2em;
+}
+
+.login input {
+  border-style: none;
+  background-color: white;
+  padding: 1em;
+  text-align: center;
+  margin: 0.2em;
+  border-radius: 0.2em;
+  color: grey;
+  letter-spacing: 0.2em;
+}
+
 /*# sourceMappingURL=main.css.map */
