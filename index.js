@@ -1,21 +1,21 @@
 const express = require(`express`);
-const path = require('path');
+const path = require(`path`);
 require(`./controllers/connection`);
 const app = express();
 const urlencoded = express.urlencoded({ extended: true });
-const flash = require('connect-flash');
-const session = require('express-session');
-const User = require(`./models/user`);
-const magIk = require(`./controllers/authentication`);
+const flash = require(`connect-flash`);
+const session = require(`express-session`);
 const passport = require(`passport`);
 
-app.use("/static", express.static(path.join(__dirname, '/static'))).use(urlencoded);
+app
+  .use(`/static`, express.static(path.join(__dirname, `/static`)))
+  .use(urlencoded);
 
 app.set(`view engine`, `ejs`);
 // session gegevens meegeven/ installen
 app.use(
   session({
-    cookie: { maxAge: 60000 }, 
+    cookie: { maxAge: 60000 },
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -31,9 +31,9 @@ app.use(passport.session());
 // flash messages
 app.use(flash());
 
-// Add message(s) on locals.
-app.use(function (req, res, next) {
-  res.locals.messages = req.flash("success");
+// add message(s) on locals.
+app.use((req, res, next) => {
+  res.locals.messages = req.flash(`success`);
   next();
 });
 
