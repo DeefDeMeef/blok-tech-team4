@@ -1,21 +1,19 @@
 const express = require(`express`);
+const path = require(`path`);
 require(`./controllers/connection`);
 const app = express();
 const urlencoded = express.urlencoded({ extended: true });
-const User = require(`./models/user`);
-const magIk = require(`./controllers/authentication`);
-const flash = require(`express-flash`);
+const flash = require(`connect-flash`);
 const session = require(`express-session`);
-const path = require('path');
-const passport = require('passport');
+const passport = require(`passport`);
 
 app.use("/static", express.static(path.join(__dirname, '/static'))).use(urlencoded);
-
 
 app.set(`view engine`, `ejs`);
 // session gegevens meegeven/ installen
 app.use(
   session({
+    cookie: { maxAge: 60000 },
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -28,9 +26,26 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// flash messages
+app.use(flash());
+
+// add message(s) on locals.
+app.use((req, res, next) => {
+  res.locals.messages = req.flash(`success`);
+  next();
+});
+
 // profile routes
 const profileRoutes = require(`./routes/profileRoutes`);
 app.use(profileRoutes);
+
+// mailer routes
+const mailerRoutes = require(`./routes/mailerRoutes`);
+app.use(mailerRoutes);
+
+// filter routes
+const filterRoutes = require(`./routes/filterRoutes`);
+app.use(filterRoutes);
 
 // login routes
 const loginRoutes = require(`./routes/loginRoutes`);

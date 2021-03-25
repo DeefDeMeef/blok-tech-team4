@@ -119,3 +119,6 @@ dist
 
 # img/tmp directory
 static/uploads/
+
+# vscode
+.vscode
