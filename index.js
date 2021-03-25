@@ -6,8 +6,10 @@ const User = require(`./models/user`);
 const magIk = require(`./controllers/authentication`);
 const flash = require(`express-flash`);
 const session = require(`express-session`);
+const path = require('path');
 
-app.use(express.static(`static`)).use(urlencoded);
+app.use("/static", express.static(path.join(__dirname, '/static'))).use(urlencoded);
+
 
 app.set(`view engine`, `ejs`);
 
