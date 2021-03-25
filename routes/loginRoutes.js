@@ -4,6 +4,7 @@ const app = express();
 const flash = require(`express-flash`);
 const session = require(`express-session`);
 require(`../controllers/connection`);
+const profileController = require(`../controllers/profileController`);
 
 // path
 const path = require(`path`);
@@ -13,6 +14,23 @@ const bodyParser = require(`body-parser`);
 // database Model
 const User = require(`../models/user`);
 
+try {
+  User.collection.findOne(
+    {
+      email: `davey@test.nl`,
+    },
+    async (err, obj) => {
+      if (!obj) {
+        console.log(`Bestaat niet!`);
+      } else {
+        console.log(`Bestaat jonge!`);
+      }
+    }
+  );
+} catch (error) {
+  console.log(error);
+}
+
 const bcrypt = require(`bcrypt`);
 
 // passport - initialize is wat er meegenomen moet worden in de sessie
@@ -20,7 +38,7 @@ const passport = require(`passport`);
 const initializePassport = require(`../controllers/passport-config`);
 initializePassport(
   passport,
-  (username) => users.find((user) => user.username === username),
+  (email) => users.find((user) => user.email === email),
   (id) => users.find((user) => user.id === id)
 );
 
@@ -30,22 +48,11 @@ const magIk = (req, res, next) => {
     return next();
   }
   req.flash(`error`);
-  res.redirect(`login`);
+  res.redirect(`/login`);
 };
+
 // flash ophalen
 app.use(flash());
-// session gegevens meegeven/ installen
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
-// passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(bodyParser.json());
 app.use(
@@ -70,19 +77,56 @@ app.get(`/register`, (req, res) => {
   res.render(`register`);
 });
 
-app.get(`*`, (req, res) => {
-  res.send(`NOPE 404`, 404);
-});
-
 app.get(`/`, magIk, (req, res) => {
+  req.session.userEmail = req.user.email;
   res.render(`index`, {
-    name: req.user.name,
+    title: `Dashboard`,
+    name: req.session.userEmail,
   });
 });
 
 app.get(`/logout`, (req, res) => {
   req.logout();
   res.redirect(`login`);
+});
+
+app.get(`/chat`, magIk, async (req, res) => {
+  try {
+    // vind de gebruiker die inlogd is
+    await User.find(
+      { email: req.session.userEmail },
+      `_id email`,
+      async (err, obj) => {
+        console.log(obj);
+        if (obj) {
+          // vind alle gebruikers != ingelogde user
+          await User.find(
+            { email: { $ne: req.session.userEmail } },
+            `_id email `,
+            async (err, obj2) => {
+              console.log(obj2);
+              res.render(`chat`, {
+                title: `chat`,
+                name: req.session.userEmail,
+                otherUsers: obj2,
+              });
+            }
+          );
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app
+  .get(`/profile/create`, magIk, profileController.getCreateProfile)
+  .get(`/profile/:profileId`, magIk, profileController.getProfile)
+  .get(`/edit/:profileId`, magIk, profileController.editProfile);
+
+app.get(`*`, (req, res) => {
+  res.send(`NOPE 404`, 404);
 });
 
 app.post(`/registered`, async (req, res) => {

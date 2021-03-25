@@ -5,15 +5,28 @@ const app = express();
 const urlencoded = express.urlencoded({ extended: true });
 const flash = require('connect-flash');
 const session = require('express-session');
-
-app.use(session({ cookie: { maxAge: 60000 }, 
-                  secret: 'woot',
-                  resave: false, 
-                  saveUninitialized: false}));
+const User = require(`./models/user`);
+const magIk = require(`./controllers/authentication`);
+const passport = require(`passport`);
 
 app.use("/static", express.static(path.join(__dirname, '/static'))).use(urlencoded);
 
 app.set(`view engine`, `ejs`);
+// session gegevens meegeven/ installen
+app.use(
+  session({
+    cookie: { maxAge: 60000 }, 
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // flash messages
 app.use(flash());
@@ -39,6 +52,10 @@ app.use(filterRoutes);
 // login routes
 const loginRoutes = require(`./routes/loginRoutes`);
 app.use(loginRoutes);
+
+// chat routes
+const chatRoutes = require(`./routes/chatRoutes`);
+app.use(chatRoutes);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {

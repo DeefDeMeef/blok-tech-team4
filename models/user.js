@@ -16,6 +16,10 @@ const UserForm = new mongoose.Schema({
     type: Number,
     require: true,
   },
+  profileId: {
+    type: String,
+    require: true,
+  },
 });
 
 // userForm.plugin(passportLocalMongoose);
