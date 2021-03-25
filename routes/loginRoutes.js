@@ -54,19 +54,6 @@ const magIk = (req, res, next) => {
 // flash ophalen
 app.use(flash());
 
-// session gegevens meegeven/ installen
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
-// passport
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({

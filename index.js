@@ -6,16 +6,28 @@ const User = require(`./models/user`);
 const magIk = require(`./controllers/authentication`);
 const flash = require(`express-flash`);
 const session = require(`express-session`);
-
+const passport = require(`passport`);
 app.use(express.static(`static`)).use(urlencoded);
 
 app.set(`view engine`, `ejs`);
+// session gegevens meegeven/ installen
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
-/*
- * profile routes
- * const profileRoutes = require(`./routes/profileRoutes`);
- * app.use(profileRoutes);
- */
+app.use(flash());
+
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// profile routes
+const profileRoutes = require(`./routes/profileRoutes`);
+app.use(profileRoutes);
 
 // login routes
 const loginRoutes = require(`./routes/loginRoutes`);
