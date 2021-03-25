@@ -21,7 +21,7 @@ router
   .get(`/edit/:profileId`, magIk, profileController.editProfile);
 
 router.post(
-  `profile/create`,
+  `/profile/create`,
   upload.single(`upload`),
   profileController.postCreateProfile
 );

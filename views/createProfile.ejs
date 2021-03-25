@@ -12,7 +12,11 @@
       <h3>Vul deze gegevens in en start met liken</h3>
     </header>
     <main class="createProfile">
-      <form action="/create" method="POST" enctype="multipart/form-data">
+      <form
+        action="/profile/create"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         <div>
           <label for="name"> Naam </label>
           <input type="text" id="name" name="name" required />
@@ -25,52 +29,14 @@
           <label for="anders">Anders</label>
           <input type="radio" id="anders" name="sex" value="anders" />
         </div>
-        <label for="sports">Welke sporten vind je leuk?</label>
-        <fieldset>
-          <legend>Vink aan wat je leuk vindt</legend>
-
-          <ul class="sportsList">
-            <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox1"
-                value="voetbal"
-              />
-              <label for="checkbox1">Voetbal</label>
-            </li>
-            <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox2"
-                value="hockey"
-              />
-              <label for="checkbox2">Hockey</label>
-            </li>
-            <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox3"
-                value="basketbal"
-              />
-              <label for="checkbox3"> Basketbal</label>
-            </li>
-            <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox4"
-                value="tennis"
-              /><label for="checkbox4">Tennis</label>
-            </li>
-          </ul>
-          <div class="addSport">
-            <label for="addSport">Voeg jouw sport toe</label>
-            <input type="text" id="addSport" name="addSport" />
-          </div>
-        </fieldset>
+        <label for="selectSport">Welke sporten vind je leuk?</label>
+        <select name="sport" id="selectSport">
+          <option value="Voetbal">Voetbal</option>
+          <option value="Basketbal">Basketbal</option>
+          <option value="Hockey">Hockey</option>
+          <option value="Tennis">Tennis</option>
+          <option value="Formule1">Formule1</option>
+        </select>
         <div class="bio">
           <label for="bio">Vertel iets over jezelf</label>
           <textarea name="bio" id="bio"></textarea>
