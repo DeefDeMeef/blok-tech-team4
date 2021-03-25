@@ -17,9 +17,9 @@ const magIk = (req, res, next) => {
 };
 
 router
-  .get(`/profile/create`, profileController.getCreateProfile)
-  .get(`/profile/:profileId`, profileController.getProfile)
-  .get(`/edit/:profileId`, profileController.editProfile);
+  .get(`/profile/create`, magIk, profileController.getCreateProfile)
+  .get(`/profile/:profileId`, magIk, profileController.getProfile)
+  .get(`/edit/:profileId`, magIk, profileController.editProfile);
 
 router.post(
   `profile/create`,
