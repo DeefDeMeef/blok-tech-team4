@@ -1,10 +1,12 @@
 const Profile = require(`../models/userProfile`);
 const User = require(`../models/user`);
 const deleteImg = require(`../controllers/util/deleteImg`);
+const mongoose = require(`mongoose`);
 
 // get_createProfile, post_createProfile, get_profile
 
 exports.getCreateProfile = (req, res) => {
+  console.log(req.session);
   res.render(`createProfile`);
 };
 
@@ -17,12 +19,17 @@ exports.postCreateProfile = (req, res) => {
     upload: req.file.filename,
   });
   newProfile.save().then((profile) => {
-    console.log(req.session.userEmail);
+    req.session.profileId = profile._id;
     res.redirect(`/profile/${profile._id}`);
   });
 };
 
 exports.getProfile = async (req, res) => {
+  console.log(req.session);
+  const loggedUser = await User.findOne({ email: req.session.userEmail });
+  loggedUser.profileId = req.session.profileId;
+  await loggedUser.save();
+  console.log(loggedUser);
   const findProfile = await Profile.findById(req.params.profileId);
   res.render(`profile`, {
     profile: findProfile,

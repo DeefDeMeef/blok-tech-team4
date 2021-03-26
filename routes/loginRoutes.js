@@ -8,6 +8,7 @@ const profileController = require(`../controllers/profileController`);
 
 // path
 const path = require(`path`);
+
 // body parser - voor post reqs
 const bodyParser = require(`body-parser`);
 
@@ -60,12 +61,21 @@ app.get(`/register`, (req, res) => {
   res.render(`register`);
 });
 
-app.get(`/`, magIk, (req, res) => {
+app.get(`/`, magIk, async (req, res) => {
+  console.log(req.user);
   req.session.userEmail = req.user.email;
-  res.render(`index`, {
-    title: `Dashboard`,
-    name: req.session.userEmail,
-  });
+  const loggedUser = await User.findOne({ email: req.session.email });
+  console.log(loggedUser);
+  // eslint-disable-next-line no-negated-condition
+  try {
+    if (req.user.profileId) {
+      res.redirect(`/profile/${req.user.profileId}`);
+    } else {
+      res.redirect(`profile/create`);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.get(`/logout`, (req, res) => {
@@ -102,11 +112,6 @@ app.get(`/chat`, magIk, async (req, res) => {
     console.log(error);
   }
 });
-
-app
-  .get(`/profile/create`, magIk, profileController.getCreateProfile)
-  .get(`/profile/:profileId`, magIk, profileController.getProfile)
-  .get(`/edit/:profileId`, magIk, profileController.editProfile);
 
 app.get(`*`, (req, res) => {
   res.send(`NOPE 404`, 404);
