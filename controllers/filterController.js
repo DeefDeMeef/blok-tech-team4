@@ -1,4 +1,4 @@
-const Profile = require(`../models/userProfile`);
+// const Profile = require(`../models/userProfile`);
 
   exports.applyFilter = (req, res) => {
     console.log(req.body);

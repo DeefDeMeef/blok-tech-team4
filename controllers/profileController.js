@@ -1,4 +1,3 @@
-const Profile = require(`../models/userProfile`);
 const User = require(`../models/user`);
 const deleteImg = require(`../controllers/util/deleteImg`);
 const mongoose = require(`mongoose`);
@@ -10,48 +9,46 @@ exports.getCreateProfile = (req, res) => {
   res.render(`createProfile`);
 };
 
-exports.postCreateProfile = (req, res) => {
-  const newProfile = new Profile({
+exports.postCreateProfile = async (req, res) => {
+  const profileData = {
     name: req.body.name,
     sex: req.body.sex,
     sport: req.body.sport,
     bio: req.body.bio,
-    upload: req.file.filename,
-  });
-  newProfile.save().then((profile) => {
-    req.session.profileId = profile._id;
-    res.redirect(`/profile/${profile._id}`);
-  });
+    upload: req.file && req.file.filename,
+  };
+
+  await User.updateOne({ email: req.session.userEmail }, { profile: profileData });
+
+  res.redirect(`/profile/${req.user._id}`);
 };
 
 exports.getProfile = async (req, res) => {
-  console.log(req.session);
   const loggedUser = await User.findOne({ email: req.session.userEmail });
-  loggedUser.profileId = req.session.profileId;
-  await loggedUser.save();
-  console.log(loggedUser);
-  const findProfile = await Profile.findById(req.params.profileId);
+
   res.render(`profile`, {
-    profile: findProfile,
+    profile: loggedUser.profile,
   });
 };
 
 exports.editProfile = async (req, res) => {
-  const findProfile = await Profile.findById(req.params.profileId);
+  const UserProfile = await User.findById(req.params.profileId);
+
   res.render(`editProfile`, {
-    profile: findProfile,
+    profile: UserProfile.profile,
   });
 };
 
 exports.updateProfile = async (req, res) => {
-  const findUser = await Profile.findById(req.params.profileId);
-  console.log(findUser);
+  const User = await User.findById(req.params.profileId);
+
   if (req.file == undefined) {
     console.log(`geen upload`);
   } else {
     console.log(`geüpload`);
     deleteImg(findUser.upload);
   }
+
   const update = {
     name: req.body.name,
     sex: req.body.sex,
@@ -59,7 +56,8 @@ exports.updateProfile = async (req, res) => {
     bio: req.body.bio,
     upload: req.file ? req.file.filename : findUser.upload,
   };
-  console.log(update);
-  await Profile.updateOne({ _id: req.params.profileId }, update);
-  res.redirect(`/profile/${req.params.profileId}`);
+  
+  await User.updateOne({ _id: req.params.profileId }, { profile: update });
+
+  res.redirect(`/profile/${req.user._id}`);
 };

@@ -62,14 +62,14 @@ app.get(`/register`, (req, res) => {
 });
 
 app.get(`/`, magIk, async (req, res) => {
-  console.log(req.user);
+  console.log(req.user._id);
   req.session.userEmail = req.user.email;
   const loggedUser = await User.findOne({ email: req.session.email });
   console.log(loggedUser);
   // eslint-disable-next-line no-negated-condition
   try {
-    if (req.user.profileId) {
-      res.redirect(`/profile/${req.user.profileId}`);
+    if (loggedUser.profile) {
+      res.redirect(`/profile/${req.user._id}`);
     } else {
       res.redirect(`profile/create`);
     }
