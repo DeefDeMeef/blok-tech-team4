@@ -9,9 +9,8 @@ const userProfileSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  sports: {
-    type: Array,
-    required: true,
+  sport: {
+    type: String,
   },
   bio: {
     type: String,

@@ -4,7 +4,6 @@ const passportLocalMongoose = require(`passport-local-mongoose`);
 const UserForm = new mongoose.Schema({
   email: {
     type: String,
-
     require: true,
     unique: true,
   },
@@ -12,13 +11,18 @@ const UserForm = new mongoose.Schema({
     type: String,
     require: true,
   },
-  age: {
-    type: Number,
+  birthdate: {
+    type: String,
+    require: true,
+  },
+  sex: {
+    type: String,
     require: true,
   },
   profileId: {
     type: String,
     require: true,
+    default: undefined,
   },
 });
 
