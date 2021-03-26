@@ -12,7 +12,7 @@ exports.postCreateProfile = (req, res) => {
   const newProfile = new Profile({
     name: req.body.name,
     sex: req.body.sex,
-    sports: req.body.sports,
+    sport: req.body.sport,
     bio: req.body.bio,
     upload: req.file.filename,
   });
@@ -48,7 +48,7 @@ exports.updateProfile = async (req, res) => {
   const update = {
     name: req.body.name,
     sex: req.body.sex,
-    sports: req.body.sports,
+    sport: req.body.sport,
     bio: req.body.bio,
     upload: req.file ? req.file.filename : findUser.upload,
   };
