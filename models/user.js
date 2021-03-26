@@ -19,6 +19,7 @@ const UserForm = new mongoose.Schema({
   profileId: {
     type: String,
     require: true,
+    default: undefined,
   },
 });
 

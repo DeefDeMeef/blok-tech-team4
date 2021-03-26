@@ -51,23 +51,6 @@ const magIk = (req, res, next) => {
   res.redirect(`/login`);
 };
 
-// flash ophalen
-app.use(flash());
-
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
-
 // routes
 app.get(`/login`, (req, res) => {
   res.render(`login`);

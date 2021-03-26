@@ -15,11 +15,7 @@
     </header>
     <main>
       <p><%=profile.name%></p>
-      <ul>
-        <% profile.sports.forEach((sport)=>{ %>
-        <li><%= sport %></li>
-        <%})%>
-      </ul>
+      <p><%=profile.sport%></p>
       <p><%=profile.sex%></p>
       <p><%=profile.bio%></p>
       <img src="/uploads/<%=profile.upload%>" alt="" />
