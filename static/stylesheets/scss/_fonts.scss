@@ -6,10 +6,20 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Futura Condensed';
     src: url('../fonts/FuturaCondensedPlain.woff2') format('woff2'), url('FuturaCondensedPlain.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: "Futura Light";
+    src: url("//db.onlinewebfonts.com/t/2167e76f00e569cc11b3665679996380.woff2") format("woff2"),
+        url("//db.onlinewebfonts.com/t/2167e76f00e569cc11b3665679996380.woff") format("woff");
+}
+
+$font-primary: Futura;
+$font-secundary: Futura Light;
 

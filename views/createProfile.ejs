@@ -1,6 +1,8 @@
 <%- include('partials/head') %>
-  <body>
-    <header>
+
+<body>
+  <main class="createProfile">
+    <section>
       <h1>Maak je profiel compleet</h1>
       <h3>Vul deze gegevens in en start met liken</h3>
     </header>
@@ -22,30 +24,42 @@
           <label for="anders">Anders</label>
           <input type="radio" id="anders" name="sex" value="anders" />
         </div>
-        <label for="selectSport">Welke sporten vind je leuk?</label>
-        <select name="sport" id="selectSport">
-          <option value="Voetbal">Voetbal</option>
-          <option value="Basketbal">Basketbal</option>
-          <option value="Hockey">Hockey</option>
-          <option value="Tennis">Tennis</option>
-          <option value="Formule1">Formule1</option>
-        </select>
+        <fieldset>
+          <legend>Welke sporten vind je leuk?</legend>
+
+          <ul class="sportsList">
+            <li class="sport">
+              <input type="checkbox" name="sports" id="checkbox1" value="voetbal" />
+              <label for="checkbox1">Voetbal</label>
+            </li>
+            <li class="sport">
+              <input type="checkbox" name="sports" id="checkbox2" value="hockey" />
+              <label for="checkbox2">Hockey</label>
+            </li>
+            <li class="sport">
+              <input type="checkbox" name="sports" id="checkbox3" value="basketbal" />
+              <label for="checkbox3"> Basketbal</label>
+            </li>
+            <li class="sport">
+              <input type="checkbox" name="sports" id="checkbox4" value="tennis" /><label for="checkbox4">Tennis</label>
+            </li>
+          </ul>
+          <div class="addSport">
+            <label for="addSport">Voeg jouw sport toe</label>
+            <input type="text" id="addSport" name="addSport" />
+          </div>
+        </fieldset>
         <div class="bio">
           <label for="bio">Vertel iets over jezelf</label>
           <textarea name="bio" id="bio"></textarea>
         </div>
         <div class="upload">
           <label for="upload">Upload je foto</label>
-          <input
-            type="file"
-            name="upload"
-            id="upload"
-            placeholder="Kies bestand"
-            accept="image/png, image/jpeg, image/gif"
-          />
+          <input type="file" name="upload" id="upload" placeholder="Kies bestand"
+            accept="image/png, image/jpeg, image/gif" />
         </div>
         <button>Opslaan</button>
       </form>
-    </main>
-  </body>
-
+    </section>
+  </main>
+</body>

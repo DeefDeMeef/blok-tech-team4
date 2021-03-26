@@ -1,6 +1,6 @@
 /* Error: expected "{".
  *    ,
- * 13 | $border-radius: .2em; 
+ * 13 | $radius-border: .2em; 
  *    |                     ^
  *    '
  *   static/stylesheets/scss/_colors.scss 13:21  @import
@@ -14,5 +14,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a    \2577 \a 13 \2502  $border-radius: .2em; \a    \2502                      ^\a    \2575 \a   static/stylesheets/scss/_colors.scss 13:21  @import\a   static/stylesheets/scss/main.scss 5:9       root stylesheet';
+  content: 'Error: expected "{".\a    \2577 \a 13 \2502  $radius-border: .2em; \a    \2502                      ^\a    \2575 \a   static/stylesheets/scss/_colors.scss 13:21  @import\a   static/stylesheets/scss/main.scss 5:9       root stylesheet';
 }
