@@ -5,6 +5,7 @@ const flash = require(`express-flash`);
 const session = require(`express-session`);
 require(`../controllers/connection`);
 const profileController = require(`../controllers/profileController`);
+const chatController = require('../controllers/chatController')
 
 // path
 const path = require(`path`);
@@ -13,23 +14,7 @@ const bodyParser = require(`body-parser`);
 
 // database Model
 const User = require(`../models/user`);
-
-try {
-  User.collection.findOne(
-    {
-      email: `davey@test.nl`,
-    },
-    async (err, obj) => {
-      if (!obj) {
-        console.log(`Bestaat niet!`);
-      } else {
-        console.log(`Bestaat jonge!`);
-      }
-    }
-  );
-} catch (error) {
-  console.log(error);
-}
+const Profile = require(`../models/userProfile`);
 
 const bcrypt = require(`bcrypt`);
 
@@ -90,35 +75,7 @@ app.get(`/logout`, (req, res) => {
   res.redirect(`login`);
 });
 
-app.get(`/chat`, magIk, async (req, res) => {
-  try {
-    // vind de gebruiker die inlogd is
-    await User.find(
-      { email: req.session.userEmail },
-      `_id email`,
-      async (err, obj) => {
-        console.log(obj);
-        if (obj) {
-          // vind alle gebruikers != ingelogde user
-          await User.find(
-            { email: { $ne: req.session.userEmail } },
-            `_id email `,
-            async (err, obj2) => {
-              console.log(obj2);
-              res.render(`chat`, {
-                title: `chat`,
-                name: req.session.userEmail,
-                otherUsers: obj2,
-              });
-            }
-          );
-        }
-      }
-    );
-  } catch (error) {
-    console.log(error);
-  }
-});
+app.get('/chat', magIk, chatController.chatWindow)
 
 app
   .get(`/profile/create`, magIk, profileController.getCreateProfile)
