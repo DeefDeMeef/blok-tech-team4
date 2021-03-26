@@ -1,18 +1,264 @@
-/* Error: expected "{".
- *    ,
- * 13 | $radius-border: .2em; 
- *    |                     ^
- *    '
- *   static/stylesheets/scss/_colors.scss 13:21  @import
- *   static/stylesheets/scss/main.scss 5:9       root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a    \2577 \a 13 \2502  $radius-border: .2em; \a    \2502                      ^\a    \2575 \a   static/stylesheets/scss/_colors.scss 13:21  @import\a   static/stylesheets/scss/main.scss 5:9       root stylesheet';
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove all default styles */
+a {
+  text-decoration: none;
+}
+
+/* SOURCE FONTS https://freefontsfamily.com/futura-font-family-free/ */
+@font-face {
+  font-family: "futuralight";
+  src: url("../fonts/futura_light_bt-webfont.woff2") format("woff2"), url("../fonts/futura_light_bt-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura Condensed";
+  src: url("../fonts/FuturaCondensedPlain.woff2") format("woff2"), url("FuturaCondensedPlain.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Futura Light";
+  src: url("//db.onlinewebfonts.com/t/2167e76f00e569cc11b3665679996380.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/2167e76f00e569cc11b3665679996380.woff") format("woff");
+}
+/* Body */
+/* Buttons */
+/* Body */
+body {
+  background: linear-gradient(0deg, #343737 0%, #0a0a09 100%);
+  background-repeat: no-repeat;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  /* Setions */
+  /* Forms */
+}
+body h1 {
+  font-family: Futura Light;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 1em;
+  text-align: center;
+  margin: 0em 2em;
+  line-height: 1.5em;
+}
+body h3 {
+  font-family: Futura Light;
+  text-align: center;
+  margin-bottom: 3em;
+  line-height: 1.5em;
+  letter-spacing: 0.2em;
+}
+body p {
+  font-family: Futura Light;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
+  line-height: 2em;
+  margin-top: 2em;
+}
+body p a {
+  color: white;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.3em;
+}
+body section,
+body div {
+  margin-top: 2em;
+}
+body form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body form ul {
+  padding: 0;
+}
+body form li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5em;
+}
+body form label {
+  font-family: Futura Light;
+  font-size: 1em;
+  padding-bottom: 0.5em;
+  letter-spacing: 0.2em;
+}
+body form input {
+  border-style: none;
+  background-color: white;
+  padding: 1em;
+  text-align: center;
+  margin: 0.2em;
+  border-radius: 0.2em;
+  color: grey;
+  letter-spacing: 0.2em;
+  padding: 1em;
+}
+body form input:not([type=radio]):not([type=checkbox]) {
+  width: 70vw;
+}
+body form input[type=radio],
+body form input[type=checkbox] {
+  margin: 0em 1em;
+}
+
+/* Buttons */
+button:enabled {
+  background-color: #000000;
+  color: #ffffff;
+  border-style: none;
+  width: 50vw;
+  padding: 1.5em 1em;
+  font-family: Futura;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  border-radius: 0.2em;
+  text-transform: uppercase;
+}
+button:enabled:hover {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+}
+button:enabled:active {
+  background-color: linear-gradient 0deg, #cb2f4f 0%, #c32a4b 100%;
+}
+button:enabled:focus {
+  background-color: #000000;
+  box-shadow: inset 0 0 1px #ffffff00;
+}
+button:enabled:disabled {
+  background-color: #000000;
+}
+
+/* createProfile.ejs */
+.createProfile form {
+  margin: 1.5em;
+  margin-top: 50vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.createProfile form div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.createProfile form fieldset {
+  margin-top: 2em;
+}
+.createProfile form .sportsList label {
+  margin-left: 2em;
+}
+.createProfile form legend {
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  margin-top: 2em;
+  font-family: Futura Light;
+  text-align: center;
+  line-height: 2em;
+}
+.createProfile form div:nth-of-type(4) {
+  position: absolute;
+  top: 30vw;
+  margin: auto;
+  margin-bottom: 2em;
+  background-repeat: no-repeat;
+  width: 40%;
+  height: 40vw;
+  border-radius: 100%;
+  box-shadow: rgba(255, 255, 255, 0.3) 0.1rem 0px 0.5rem 0.2rem;
+}
+.createProfile form div:nth-of-type(4) label {
+  padding-bottom: 4em;
+  padding-top: 3em;
+  text-align: center;
+  line-height: 1.5em;
+  margin: 0em 1em;
+}
+.createProfile form ul {
+  margin: 0 auto;
+  border-radius: 0.2em;
+}
+.createProfile form li {
+  justify-content: flex-start;
+}
+.createProfile form input[type=file] {
+  display: none;
+}
+.createProfile form textarea {
+  width: 70vw;
+  height: 7em;
+  padding: 0.8em;
+}
+.createProfile form button {
+  margin-top: 2em;
+}
+
+/* partials/nav.ejs */
+nav {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  font-family: Futura Light;
+}
+nav ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+nav li {
+  padding: 1em;
+  color: white;
+}
+nav a {
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */
