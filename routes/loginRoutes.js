@@ -64,7 +64,7 @@ app.get(`/register`, (req, res) => {
 app.get(`/`, magIk, async (req, res) => {
   console.log(req.user._id);
   req.session.userEmail = req.user.email;
-  const loggedUser = await User.findOne({ email: req.session.email });
+  const loggedUser = await User.findOne({ email: req.user.email });
   console.log(loggedUser);
   // eslint-disable-next-line no-negated-condition
   try {
