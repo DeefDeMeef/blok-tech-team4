@@ -1,6 +1,25 @@
 const mongoose = require(`mongoose`);
 const passportLocalMongoose = require(`passport-local-mongoose`);
 
+const UserProfile = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  sport: {
+    type: String,
+  },
+  bio: {
+    type: String,
+  },
+  upload: {
+    type: String,
+  },
+  likes: {
+    type: Array,
+  },
+});
+
 const UserForm = new mongoose.Schema({
   email: {
     type: String,
@@ -18,15 +37,14 @@ const UserForm = new mongoose.Schema({
   sex: {
     type: String,
     require: true,
+    default: undefined,
   },
-  profileId: {
-    type: String,
-    require: true,
+  profile: {
+    type: UserProfile,
+    required: false,
     default: undefined,
   },
 });
-
-// userForm.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model(
   `user`,
