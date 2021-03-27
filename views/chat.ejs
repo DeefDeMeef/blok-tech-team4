@@ -7,21 +7,23 @@
     <title><%= title %></title>
 </head>
 <body>
-    <p><%= name %></p>
-
-    <% otherUsers.forEach((otherUsers, index) => { %>
-        <article style="display: none;">
-            <p>id: <%= otherUsers._id %></p>
-            <p>mail: <%= otherUsers.email %></p>
-        </article>
-        <% }) %>
+    <a href="/"><button id="leave-btn">Leave Chat</button></a>
+    <p id="user"><%= name %></p>
+    <p id="room"><%= room %></p>
     <div id="message-box"></div>
     <form id="send-container">
-        <input type="text" id="message-input">
+        <input
+        id="msg"
+        type="text"
+        placeholder="Typ bericht..."
+        required
+        autocomplete="off"
+        />
         <button type="submit" id="send-btn">Verstuur</button>
     </form>
 
     <script defer src="http://localhost:4000/socket.io/socket.io.js"></script>
     <script defer src="js/clientChat.js"></script>
+
 </body>
 </html>
