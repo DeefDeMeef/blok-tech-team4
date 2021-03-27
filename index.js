@@ -11,6 +11,8 @@ app
   .use(`/static`, express.static(path.join(__dirname, `/static`)))
   .use(urlencoded);
 
+app.use(express.static("static"));
+
 app.set(`view engine`, `ejs`);
 // session gegevens meegeven/ installen
 app.use(

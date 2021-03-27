@@ -32,7 +32,7 @@ exports.getProfile = async (req, res) => {
 };
 
 exports.editProfile = async (req, res) => {
-  const UserProfile = await User.findById(req.params.profileId);
+  const UserProfile = await User.findOne({ email: req.session.userEmail });
 
   res.render(`editProfile`, {
     profile: UserProfile.profile,
@@ -40,13 +40,13 @@ exports.editProfile = async (req, res) => {
 };
 
 exports.updateProfile = async (req, res) => {
-  const User = await User.findById(req.params.profileId);
+  const user = await User.findOne({ email: req.session.userEmail });
 
   if (req.file == undefined) {
     console.log(`geen upload`);
   } else {
     console.log(`geüpload`);
-    deleteImg(findUser.upload);
+    deleteImg(user.upload);
   }
 
   const update = {
@@ -54,10 +54,10 @@ exports.updateProfile = async (req, res) => {
     sex: req.body.sex,
     sport: req.body.sport,
     bio: req.body.bio,
-    upload: req.file ? req.file.filename : findUser.upload,
+    upload: req.file ? req.file.filename : user.profile.upload,
   };
   
-  await User.updateOne({ _id: req.params.profileId }, { profile: update });
+  await User.updateOne({ email: req.session.userEmail }, { profile: update });
 
-  res.redirect(`/profile/${req.user._id}`);
+  res.redirect(`/profile/${user._id}`);
 };
