@@ -22,7 +22,7 @@ router
   .get(`/edit/:profileId`, profileController.editProfile);
 
 router.post(
-  `/profile/create`,
+  `profile/create`,
   upload.single(`upload`),
   profileController.postCreateProfile
 );

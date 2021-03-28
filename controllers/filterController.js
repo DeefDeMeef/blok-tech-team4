@@ -1,13 +1,7 @@
-// const Profile = require(`../models/userProfile`);
+const User = require(`../models/user`);
 
-  exports.applyFilter = (req, res) => {
-    console.log(req.body);
-    // const findSports = await Profile.findMany(req.body.sports).then(
-    //   (profile) => profile
-    // );
-    // res.render(`profile`, {
-    //   profile: findProfile,
-    // });
+  exports.applyFilter = async (req, res) => {
+    const findMatch = await User.find( { "profile.sport": {$eq: req.body.sports} });
+    console.log(findMatch);
+    res.render('filterSports', {matches: findMatch});
   };
-
- 
