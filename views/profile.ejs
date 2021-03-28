@@ -11,7 +11,9 @@
       <h1>Dit is jouw profiel</h1>
       <a href="/create">Ga terug</a>
       <a href="/chat">Chat</a>
+      <a href="/filter">Vind matches</a>
       <a href="/edit/<%= profile._id%>">Bewerken</a>
+      <a href="/mail">Contact</a>
       <p><%= profile._id%></p>
     </header>
     <main>
@@ -20,6 +22,14 @@
       <p><%=profile.sex%></p>
       <p><%=profile.bio%></p>
       <img src="/uploads/<%=profile.upload%>" alt="" />
+      <h3>Mensen die je geliked hebt</h3>
+      <ul>
+        <% for (let i = 0; i < liked.length; i++) { %>
+          <li>
+            <%= liked[i] %>
+          </li>
+        <%  } %>
+      </ul>
     </main>
   </body>
 </html>
