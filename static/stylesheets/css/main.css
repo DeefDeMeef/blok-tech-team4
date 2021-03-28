@@ -261,4 +261,43 @@ nav a {
   color: white;
 }
 
+/* Buttons */
+nav li:enabled {
+  background-color: #000000;
+  color: #ffffff;
+  border-style: none;
+  width: 50vw;
+  padding: 1.5em 1em;
+  font-family: Futura;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  border-radius: 0.2em;
+  text-transform: uppercase;
+}
+nav li:enabled:hover {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+}
+nav li:enabled:active {
+  background-color: linear-gradient 0deg, #cb2f4f 0%, #c32a4b 100%;
+}
+nav li:enabled:focus {
+  background-color: #000000;
+  box-shadow: inset 0 0 1px #ffffff00;
+}
+nav li:enabled:disabled {
+  background-color: #000000;
+}
+
+.chat-message {
+  color: blue;
+  border-style: 1px solid white;
+  background-color: red;
+  font-size: 1em;
+}
+
+#message-box {
+  color: blue;
+}
+
 /*# sourceMappingURL=main.css.map */
