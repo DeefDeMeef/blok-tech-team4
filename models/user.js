@@ -37,6 +37,7 @@ const UserForm = new mongoose.Schema({
   sex: {
     type: String,
     require: true,
+    default: undefined,
   },
   profile: {
     type: UserProfile,

@@ -1,0 +1,231 @@
+/* Body */
+body {
+    background: $body-color;
+    background-repeat: no-repeat;
+    color: $text-color;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+
+    h1 {
+        font-family: Futura Light;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+        font-size: 1em;
+        text-align: center;
+        margin: 0em 2em;
+        line-height: 1.5em;
+    }
+
+    h3 {
+        font-family: Futura Light;
+        text-align: center;
+        margin-bottom: 3em;
+        line-height: 1.5em;
+        letter-spacing: .2em;
+    }
+
+    p {
+        font-family: Futura Light;
+        font-size: 1em;
+        letter-spacing: .2em;
+        text-align: center;
+        line-height: 2em;
+        margin-top: 2em;
+    }
+
+    p a {
+        color: white;
+        border-bottom: 1px solid white;
+        padding-bottom: .3em;
+    }
+
+    /* Setions */
+    section,
+    div {
+        margin-top: 2em;
+
+    }
+
+    /* Forms */
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1.5em;
+        }
+
+        label {
+            font-family: Futura Light;
+            font-size: 1em;
+            padding-bottom: .5em;
+            letter-spacing: .2em;
+        }
+
+        input {
+            border-style: none;
+            background-color: rgba(255, 255, 255);
+            padding: 1em;
+            text-align: center;
+            margin: .2em;
+            border-radius: .2em;
+            color: grey;
+            letter-spacing: .2em;
+            padding: 1em;
+        }
+
+        input:not([type=radio]):not([type=checkbox]) {
+            width: 70vw;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            margin: 0em 1em;
+        }
+    }
+}
+
+
+
+/* Buttons */
+button:enabled {
+    background-color: $enabled-color;
+    color: $text-color;
+    border-style: none;
+    width: 50vw;
+    padding: 1.5em 1em;
+    font-family: Futura;
+    font-size: .7em;
+    letter-spacing: .2em;
+    border-radius: $radius-border;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $hover-color;
+        border: $hover-border;
+    }
+
+    &:active {
+        background-color: $active-color;
+    }
+
+    &:focus {
+        background-color: $focus-color;
+        box-shadow: $focus-shadow;
+    }
+
+    &:disabled {
+        background-color: $disabled-color;
+    }
+}
+
+/* createProfile.ejs */
+.createProfile form {
+    margin: 1.5em;
+    margin-top: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    fieldset {
+        margin-top: 2em;
+    }
+    .sportsList label {
+        margin-left: 2em;
+    }
+    legend {
+        font-size: 1em;
+        letter-spacing: .2em;
+        margin-top: 2em;
+        font-family: Futura Light;
+        text-align: center;
+        line-height: 2em;
+    }
+
+    div:nth-of-type(4) {
+        position: absolute;
+        top: 30vw;
+        margin: auto;
+        margin-bottom: 2em;
+        background-repeat: no-repeat;
+        width: 40%;
+        height: 40vw;
+        border-radius: 100%;
+        box-shadow: rgba(255, 255, 255, 0.3) 0.1rem 0px 0.5rem 0.2rem;
+    }
+
+    div:nth-of-type(4) label {
+        padding-bottom: 4em;
+        padding-top: 3em;
+        text-align: center;
+        line-height: 1.5em;
+        margin: 0em 1em;
+    }
+
+    ul {
+        margin: 0 auto;
+        border-radius: $radius-border;
+    }
+
+    li {
+        justify-content: flex-start;
+    }
+
+    input[type=file] {
+        display: none;
+    }
+
+    textarea {
+        width: 70vw;
+        height: 7em;
+        padding: .8em;
+    }
+
+    button {
+        margin-top: 2em;
+    }
+
+}
+
+/* partials/nav.ejs */
+nav{
+    bottom:0;
+    position:fixed;
+    width:100%;
+    font:{
+        family: Futura Light;
+    }
+
+    text:{
+        
+
+       
+    }
+    ul{
+    display:flex;
+    justify-content: space-evenly;
+    
+    }
+        li{
+            padding:1em;
+            color:white;
+        }
+        a{
+            color:white;
+           
+        }
+     
+}
