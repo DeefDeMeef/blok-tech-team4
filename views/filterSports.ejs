@@ -18,39 +18,20 @@
           <legend>Vink aan wat je leuk vindt</legend>
           <ul class="sportsList">
             <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox1"
-                value="Voetbal"
-              />
-              <label for="checkbox1">Voetbal</label>
+              <input type="radio" id="radio1" name="sports" value="Voetbal">
+              <label for="radio1">Voetbal</label>
             </li>
             <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox2"
-                value="Hockey"
-              />
-              <label for="checkbox2">Hockey</label>
+              <input type="radio" id="radio2" name="sports" value="Hockey">
+              <label for="radio2">Hockey</label>
             </li>
             <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox3"
-                value="Basketbal"
-              />
-              <label for="checkbox3">Basketbal</label>
+              <input type="radio" id="radio3" name="sports" value="Basketbal">
+              <label for="radio3">Basketbal</label>
             </li>
             <li class="sport">
-              <input
-                type="checkbox"
-                name="sports"
-                id="checkbox4"
-                value="Tennis"
-              /><label for="checkbox4">Tennis</label>
+              <input type="radio" id="radio4" name="sports" value="Tennis">
+              <label for="radio4">Tennis</label>
             </li>
           </ul>
         </fieldset>
@@ -67,7 +48,7 @@
           <p><%= matches[i].profile.bio %></p>
         </li>
         <form action="/like" method="POST">
-          <input name="userId" type="hidden" value="<%= matches[i]._id %>">
+          <input name="email" type="hidden" value="<%= matches[i].email %>">
           <input type="radio" id="like" name="action" value="like">
           <label for="like">Like</label>
           <input type="radio" id="dislike" name="action" value="dislike">
