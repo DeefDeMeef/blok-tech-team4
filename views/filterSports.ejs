@@ -12,17 +12,17 @@
       <h3>Vul deze gegevens in en vind een match</h3>
     </header>
     <main class="createProfile">
-      <form action="/applyFilter" method="POST" enctype="multipart/form-data">
+      <form action="/applyFilter" method="POST">
         <label for="sports">Welke sporten vind je leuk?</label>
         <fieldset>
           <legend>Vink aan wat je leuk vindt</legend>
-          <!-- <ul class="sportsList">
+          <ul class="sportsList">
             <li class="sport">
               <input
                 type="checkbox"
                 name="sports"
                 id="checkbox1"
-                value="voetbal"
+                value="Voetbal"
               />
               <label for="checkbox1">Voetbal</label>
             </li>
@@ -52,11 +52,31 @@
                 value="Tennis"
               /><label for="checkbox4">Tennis</label>
             </li>
-          </ul> -->
-          <input type="text" name="text" id="">
+          </ul>
         </fieldset>
         <input type="submit" value="Apply filter">
       </form>
+      <h2>Matches:</h2>
+      <ul>
+      <% for (let i = 0; i < matches.length; i++) { %>
+        <li class="match">
+          <img src="<%= matches[i].upload %>" alt="">
+          <h3><%= matches[i].profile.name %></h3>
+          <h4><%= matches[i].sex %></h4>
+          <h5><%= matches[i].profile.sports %></h5>
+          <p><%= matches[i].profile.bio %></p>
+        </li>
+        <form action="/like" method="POST">
+          <input name="userId" type="hidden" value="<%= matches[i]._id %>">
+          <input type="radio" id="like" name="action" value="like">
+          <label for="like">Like</label>
+          <input type="radio" id="dislike" name="action" value="dislike">
+          <label for="dislike">Dislike</label>
+          <input type="submit" value="Save">
+        </form>
+      <%  } %>
+    </ul>
     </main>
   </body>
 </html>
+

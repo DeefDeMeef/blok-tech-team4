@@ -27,8 +27,8 @@ exports.getProfile = async (req, res) => {
   const loggedUser = await User.findOne({ email: req.session.userEmail });
 
   res.render(`profile`, {
-    profile: loggedUser.profile,
-  });
+    profile: loggedUser.profile, liked: loggedUser.profile.likes}
+  );
 };
 
 exports.editProfile = async (req, res) => {
