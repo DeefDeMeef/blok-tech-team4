@@ -7,9 +7,7 @@ const flash = require(`connect-flash`);
 const session = require(`express-session`);
 const passport = require(`passport`);
 
-app
-  .use(`/static`, express.static(path.join(__dirname, `/static`)))
-  .use(urlencoded);
+app.use("/static", express.static(path.join(__dirname, '/static'))).use(urlencoded);
 
 app.use(express.static("static"));
 

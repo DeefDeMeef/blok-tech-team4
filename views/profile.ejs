@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your profile</title>
-  </head>
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
   <body>
     <header>
       <h1>Dit is jouw profiel</h1>
-      <a href="/create">Ga terug</a>
+      <a href="/login">uitloggen</a>
       <a href="/chat">Chat</a>
       <a href="/filter">Vind matches</a>
       <a href="/edit/<%= profile._id%>">Bewerken</a>
@@ -32,4 +26,4 @@
       </ul>
     </main>
   </body>
-</html>
+

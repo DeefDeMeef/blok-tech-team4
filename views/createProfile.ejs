@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maak je profiel aan</title>
-  </head>
-  <body>
-    <header>
+<%- include('partials/head') %>
+
+<body>
+  <main class="createProfile">
+    <section>
       <h1>Maak je profiel compleet</h1>
       <h3>Vul deze gegevens in en start met liken</h3>
     </header>
@@ -35,16 +30,11 @@
         </div>
         <div class="upload">
           <label for="upload">Upload je foto</label>
-          <input
-            type="file"
-            name="upload"
-            id="upload"
-            placeholder="Kies bestand"
-            accept="image/png, image/jpeg, image/gif"
-          />
+          <input type="file" name="upload" id="upload" placeholder="Kies bestand"
+            accept="image/png, image/jpeg, image/gif" />
         </div>
         <button>Opslaan</button>
       </form>
-    </main>
-  </body>
-</html>
+    </section>
+  </main>
+</body>
