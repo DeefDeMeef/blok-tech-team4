@@ -1,21 +1,19 @@
 <%- include('partials/head') %>
 <%- include('partials/nav') %>
   <body>
-    <header>
-      <h1>Dit is jouw profiel</h1>
-      <a href="/login">uitloggen</a>
-      <a href="/chat">Chat</a>
-      <a href="/filter">Vind matches</a>
-      <a href="/edit/<%= profile._id%>">Bewerken</a>
-      <a href="/mail">Contact</a>
-      <p><%= profile._id%></p>
-    </header>
     <main>
+    <section class="profile">
+      <h1>profiel</h1>
+      <ul>
+      <p><%= profile._id%></p>
       <p><%=profile.name%></p>
-      <p><%=profile.sport%></p>
+      <p>houdt van <%=profile.sport%></p>
       <p><%=profile.sex%></p>
       <p><%=profile.bio%></p>
-      <img src="/uploads/<%=profile.upload%>" alt="" />
+      <img src="/uploads/<%=profile.upload%>" alt="profilepic" />
+    </ul>
+    </section>
+    <section>
       <h3>Mensen die je geliked hebt</h3>
       <ul>
         <% for (let i = 0; i < liked.length; i++) { %>
@@ -24,6 +22,8 @@
           </li>
         <%  } %>
       </ul>
+    </section>
+    <%- include('partials/footer') %>
     </main>
   </body>
 

@@ -7,7 +7,7 @@ body {
     height: 100%;
     background-attachment: fixed;
 
-    h1 {
+    h1, h2{
         font-family: Futura Light;
         letter-spacing: .3em;
         text-transform: uppercase;
@@ -16,7 +16,6 @@ body {
         margin: 0em 2em;
         line-height: 1.5em;
     }
-
     h3 {
         font-family: Futura Light;
         text-align: center;
@@ -41,56 +40,70 @@ body {
     }
 
     /* Setions */
-    section,
-    div {
+    section {
         margin-top: 2em;
 
     }
+ 
+}
 
-    /* Forms */
-    form {
+
+ /* Forms */
+ form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    ul {
+        padding: 0;
+    }
+
+    li {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        margin: 1.5em;
+    }
 
-        ul {
-            padding: 0;
-        }
+    label {
+        font-family: Futura Light;
+        font-size: 1em;
+        padding-bottom: .5em;
+        letter-spacing: .2em;
+    }
 
-        li {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 1.5em;
-        }
+    input {
+        border-style: none;
+        background-color: rgba(255, 255, 255);
+        padding: 1em;
+        text-align: center;
+        margin: .2em;
+        border-radius: .2em;
+        color: grey;
+        letter-spacing: .2em;
+        padding: 1em;
+    }
 
-        label {
-            font-family: Futura Light;
-            font-size: 1em;
-            padding-bottom: .5em;
-            letter-spacing: .2em;
-        }
+    input:not([type=radio]):not([type=checkbox]) {
+        width: 70vw;
+    }
 
-        input {
-            border-style: none;
-            background-color: rgba(255, 255, 255);
-            padding: 1em;
-            text-align: center;
-            margin: .2em;
-            border-radius: .2em;
-            color: grey;
-            letter-spacing: .2em;
-            padding: 1em;
-        }
+    input[type=radio],
+    input[type=checkbox] {
+        margin: 0em 1em;
+    }
 
-        input:not([type=radio]):not([type=checkbox]) {
-            width: 70vw;
-        }
+    select{
+        background-color: rgba(255, 255, 255, 0.2);
+        border-style: none;
+        color: white;
+        font-family: Futura;
+        letter-spacing: .2em;
+        padding: 1em;
+        margin-top: 1em;
+        width:21em;
+        border-radius:$radius-border;
 
-        input[type=radio],
-        input[type=checkbox] {
-            margin: 0em 1em;
-        }
     }
 }
 
@@ -140,22 +153,7 @@ button:enabled {
         flex-wrap: wrap;
         justify-content: center;
     }
-    fieldset {
-        margin-top: 2em;
-    }
-    .sportsList label {
-        margin-left: 2em;
-    }
-    legend {
-        font-size: 1em;
-        letter-spacing: .2em;
-        margin-top: 2em;
-        font-family: Futura Light;
-        text-align: center;
-        line-height: 2em;
-    }
-
-    div:nth-of-type(4) {
+    div:nth-of-type(3) {
         position: absolute;
         top: 30vw;
         margin: auto;
@@ -166,22 +164,12 @@ button:enabled {
         border-radius: 100%;
         box-shadow: rgba(255, 255, 255, 0.3) 0.1rem 0px 0.5rem 0.2rem;
     }
-
-    div:nth-of-type(4) label {
+    div:nth-of-type(3) label {
         padding-bottom: 4em;
         padding-top: 3em;
         text-align: center;
         line-height: 1.5em;
         margin: 0em 1em;
-    }
-
-    ul {
-        margin: 0 auto;
-        border-radius: $radius-border;
-    }
-
-    li {
-        justify-content: flex-start;
     }
 
     input[type=file] {
@@ -200,74 +188,272 @@ button:enabled {
 
 }
 
+/* profile.ejs */
+section.profile{
+    margin-top:3em;
+    h1{
+      border-top:.1em solid white;
+      padding-top:1em;
+      margin:0;
+      padding-bottom:.5em;
+     
+    }
+   ul{
+       margin-top:10em;
+       p:first-child{
+        display:none; 
+
+    }
+    
+    p{
+        margin-top:unset;
+        margin:0em 1.5em;
+    }
+    p:nth-child(2){
+text-transform: uppercase;
+font-family: Futura;
+padding-top:3em;
+    }
+    p:nth-child(5){
+        background-color: rgba(255, 255, 255, 0.2);
+        padding:1em;
+        margin-top:1em;
+        border-radius:$radius-border;
+   
+    }
+
+   }
+    
+}
+img[alt="profilepic"]{
+    position: absolute;
+        top: 30vw;
+        margin: 0 auto;
+        margin-bottom: 2em;
+        width: 40%;
+        height: 40vw;
+        border-radius: 100%;
+        left: 0;
+    right: 0;
+}
+
+
+/* editProfile.ejs */
+form.editprofile{
+    margin:1.5em;
+    label{
+        padding-top:.8em;
+    }
+    input{
+        margin:.8em;
+
+    }
+    div{
+        text-align:center;
+        input:not[type=radio]{
+        padding:1em;    
+    }
+    }
+    div:first-of-type{
+        margin-top:55vw;
+    }
+    div:last-of-type{
+        display:flex;
+        flex-direction:column;
+    position: absolute;
+    left:20%;
+    right:20%;
+    img[alt="je profielfoto"]{
+        align-self: center;
+          border-radius: 100%;
+          width:60%;
+          height:60%;       
+      }
+      input[id="upload"]{
+        display:none;
+        
+    }
+} 
+      textarea{
+        width: 70vw;
+        height: 7em;
+        padding: 0.8em;
+        margin: 0.8em;
+      }  
+}
+
+
+
+
+
+
+
+
+
+/* filterSports.ejs */
+ .sportsList{
+    padding:1em;  
+  
+    
+    ul{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: space-between;
+    }
+    li{
+        justify-content: flex-start;
+    }
+ }
+
+.filterSports{
+    margin:1.5em;
+}
+
+ul.match{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+
+
+
+
+
+
+
 /* partials/nav.ejs */
 nav{
     bottom:0;
     position:fixed;
     width:100%;
-    font:{
-        family: Futura Light;
+    z-index:10;
+    font:{ family: Futura Light;
+        
     }
 
     ul{
     display:flex;
     justify-content: space-evenly;
+    background-color:black;
     
+    li{
+        padding:1em;
+        color:white;
+        letter-spacing: .2em;
     }
-        li{
-            padding:1em;
-            color:white;
-        }
-        a{
-            color:white;
-           
-        }
-     
+ }
+
+    }
+        
+    nav a {
+            background-color: $enabled-color;
+            color: $text-color;
+            &:hover {
+                background-color: $hover-color;
+                border: $hover-border;
+            }
+        
+            &:active {
+                background-color: $active-color;
+            }
+        
+            &:focus {
+                background-color: $focus-color;
+                box-shadow: $focus-shadow;
+            }
+        
+            &:disabled {
+                background-color: $disabled-color;
+            }
+      } 
+    
+
+    
+    
+    
+
+footer{
+    position:fixed;
+    top:0;
+ width:100%;
+ padding:1em 0em;
+    background-color:transparent;
+
+    ul{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    a{
+        color:white;
+        font-family:Futura Light;
+        letter-spacing:.1em;
+        padding:0 1em;
+    }
+   
 }
 
 
 
-/* Buttons */
-nav li:enabled {
-    background-color: $enabled-color;
-    color: $text-color;
-    border-style: none;
-    width: 50vw;
-    padding: 1.5em 1em;
-    font-family: Futura;
-    font-size: .7em;
-    letter-spacing: .2em;
-    border-radius: $radius-border;
-    text-transform: uppercase;
 
-    &:hover {
-        background-color: $hover-color;
-        border: $hover-border;
-    }
 
-    &:active {
-        background-color: $active-color;
-    }
 
-    &:focus {
-        background-color: $focus-color;
-        box-shadow: $focus-shadow;
-    }
-
-    &:disabled {
-        background-color: $disabled-color;
-    }
+/* chat.ejs */
+form[id="send-container"]{
+    flex-wrap:unset;
+   margin-top:2em;
+   position:fixed;
+   bottom:0;
 }
-
-
-.chat-message{
-    color:blue;
+input[id="msg"]{
+    margin:0;
+    border-radius:unset;
+   
+}
+.message{
     border-style: 1px solid white;
-    background-color: red;
+    background-color:white;
     font-size:1em;
+    color: black;
+    width:18em;
+    border-radius:$radius-border;
+    margin:0 auto;
+ }
+ p[id="user"]{
+     font-family: Futura;
+     text-transform: uppercase;
  }
 
- #message-box{
-     color:blue;
+ p[id=room]{
+     margin:0;
+
  }
+
+ button[id="leave-btn"]{
+     background-color:transparent;
+     padding:1.5em 0em;
+     margin:0;
+ }
+
+ button[id=send-btn]{
+     width:unset;
+     border-radius:unset;
+ }
+ 
+
+/* sendMail.ejs */
+.sendMail form{
+    margin:1.5em;
+}
+
+.sendMail section{
+    margin:1.5em;
+    input{
+        margin-bottom:2em;
+    }
+}
+
+.sendMail h3{
+    padding-top:2em;
+}
  
