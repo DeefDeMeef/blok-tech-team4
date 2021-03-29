@@ -17,11 +17,12 @@ const io = require(`socket.io`)(4000, {
   function userJoin(id, username, room) {
     const user = { id, username, room };
     users.push(user)
-    console.log(user)
+    console.log(users)
     return user
   }
 
   function getCurrentUser(id) {
+    console.log(users)
     return users.find(user => user.id === id)
   }
 
@@ -30,6 +31,7 @@ const io = require(`socket.io`)(4000, {
     if (index !== -1) {
       return users.splice(index, 1)[0]
     }
+    console.log(users)
   }
 
 exports.chatWindow = async (req, res) => {
@@ -40,9 +42,6 @@ exports.chatWindow = async (req, res) => {
         name: loggedUser.profile.name,
         room: loggedUser.profile.sport,
     })
-
-    const room = loggedUser.profile.sport
-    const users = {}
 
     const bot = 'R2D2: '
   

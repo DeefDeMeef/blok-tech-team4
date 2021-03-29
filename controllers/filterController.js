@@ -5,3 +5,5 @@ const User = require(`../models/user`);
     console.log(findMatch);
     res.render('filterSports', {matches: findMatch});
   };
+
+  
