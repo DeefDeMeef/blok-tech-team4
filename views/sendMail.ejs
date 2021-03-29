@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maak je profiel aan</title>
-  </head>
-  <body>
-    <header>
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main class="sendMail">
+   <section>
       <h1>Laat een suggestie achter</h1>
       <h3>Een leuk idee voor de app? Let us know!</h3>
-    </header>
-    <main class="createProfile">
       <form action="/mail" method="POST">
         <label for="">E-mail:</label>
         <input type="text" name="email" placeholder="Vul je e-mail in">
@@ -27,6 +19,7 @@
       <% messages.forEach(function (success) { %>
         <p><%= success %></p>       
     <% }) %>
+  </section>
     </main>
-  </body>
-</html>
+  
+

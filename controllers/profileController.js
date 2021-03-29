@@ -2,6 +2,10 @@ const User = require(`../models/user`);
 const deleteImg = require(`../controllers/util/deleteImg`);
 const mongoose = require(`mongoose`);
 
+/* TOEGEVOEGD 
+const deletedUser = require('../models/userProfile');
+*/
+
 // get_createProfile, post_createProfile, get_profile
 
 exports.getCreateProfile = (req, res) => {
@@ -61,3 +65,31 @@ exports.updateProfile = async (req, res) => {
 
   res.redirect(`/profile/${user._id}`);
 };
+
+
+/* TOEGEVOEGD 
+ exports.deleteProfile = async (req, res,) => {
+  const findUser = await User.findById(req.params.profileId);
+  const deletedUser = await User.deleteOne({ _id: findUser._id }).then(() => {
+    console.log("deleted profile");
+  });
+  res.redirect("/login");
+
+
+
+  router.delete(
+    '/login',
+    passport.authenticate('jwt', { session: false }),
+    async (req, res) => {
+      const { id } = req.user;
+      try {
+        await Profile.findOneAndDelete({ user: id });
+        await User.findOneAndDelete({ _id: id });
+        res.json({ message: "Success" });
+      } catch(e) {
+         res.sendStatus(500)
+      }
+    }
+  );
+
+  */

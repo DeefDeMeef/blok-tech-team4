@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zoek naar andere</title>
-  </head>
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
   <body>
-    <header>
-      <h1>Zoek naar mensen met dezelfde interesses</h1>
-      <h3>Vul deze gegevens in en vind een match</h3>
-    </header>
-    <main class="createProfile">
+    <main class="filterSports"></main>
+    <section>
+      <h1>Vind een match</h1>
+      <h3>geef je voorkeur op en zoek een match</h3>
       <form action="/applyFilter" method="POST">
         <label for="sports">Welke sporten vind je leuk?</label>
         <fieldset>
@@ -35,8 +28,9 @@
             </li>
           </ul>
         </fieldset>
-        <input type="submit" value="Apply filter">
+        <button type="submit" value="Aplly filter">filter</button>
       </form>
+    </section>
       <h2>Matches:</h2>
       <ul>
       <% for (let i = 0; i < matches.length; i++) { %>
@@ -53,11 +47,11 @@
           <label for="like">Like</label>
           <input type="radio" id="dislike" name="action" value="dislike">
           <label for="dislike">Dislike</label>
-          <input type="submit" value="Save">
+          <button type="submit" value="Save">opslaan</button>
         </form>
       <%  } %>
     </ul>
     </main>
   </body>
-</html>
+
 

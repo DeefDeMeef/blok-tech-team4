@@ -16,10 +16,12 @@ const flash = require(`express-flash`);
  // res.redirect(`/login`);
 //};
 
+
 router
   .get(`/profile/create`, profileController.getCreateProfile)
   .get(`/profile/:profileId`, profileController.getProfile)
   .get(`/edit/:profileId`, profileController.editProfile);
+  
 
 router.post(
   `profile/create`,
