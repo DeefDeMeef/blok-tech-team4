@@ -4,7 +4,7 @@ Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport heb
 # Fast Travel
 - [Over het project](https://github.com/DeefDeMeef/blok-tech-team4#over-het-project)
 - [Gebouwd met](https://github.com/DeefDeMeef/blok-tech-team4#gebouwd-met)
-- [Getting started](]https://github.com/DeefDeMeef/blok-tech-team4#getting-started-installation)
+- [Getting started](https://github.com/DeefDeMeef/blok-tech-team4#getting-started-installation)
 - [Bronnen](https://github.com/DeefDeMeef/blok-tech-team4#bronnen)
 
 # Over het project
