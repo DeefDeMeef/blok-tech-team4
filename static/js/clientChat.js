@@ -1,4 +1,4 @@
-const socket = io(`http://localhost:4000`);
+const socket = io.connect("http://localhost:4000")
 const messageBox = document.querySelector(`#message-box`);
 const messageForm = document.querySelector(`#send-container`);
 const messageInput = document.querySelector(`#message-input`);
@@ -29,11 +29,8 @@ function createMessage(message) {
   const div = document.createElement('div')
   div.classList.add('message') // deze class kan je stylen Sarah :)
   const p = document.createElement('p')
-  p.innerText = message.username
+  p.innerText = message.username + ': ' + message.text
   div.appendChild(p)
-  const messageBox = document.createElement('p')
-  messageBox.innerText = message.text
-  div.appendChild(messageBox)
   document.querySelector('#message-box').appendChild(div)
 }
 
