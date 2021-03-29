@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.sendMail = (req, res) => {
-  const imagePath = path.join(__dirname, '../static/uploads/banner.jpeg')
+  const imagePath = path.join(__dirname, '../static/images/banner.jpeg')
   const mailOptions = {
     from: `matchingapptech@gmail.com`,
     to: req.body.email,
