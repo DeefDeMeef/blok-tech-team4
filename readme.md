@@ -11,11 +11,11 @@ Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport heb
 Sportify is de app om in contact te komen met mensen die een interesse hebben in dezelfde sport als jij. Sportify laat je chatten in een kamer met mensen met dezelfde passie. Maak een profiel aan, ga opzoek naar mensen en chat erop los.
 
 # Gebouwd met
-- Node.js
-- MongoDB database
-- EJS Templating
-- NPM packages
-- SCSS Styling
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB database](https://www.mongodb.com/)
+- [EJS Templating](https://ejs.co/)
+- [NPM packages](https://www.npmjs.com/)
+- [SCSS Styling](https://sass-lang.com/)
 
 # Getting started: Installation
 Om de applicatie te laten functioneren dienen er een paar stappen uitgevoerd te worden.
