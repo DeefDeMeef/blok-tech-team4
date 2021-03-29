@@ -8,6 +8,9 @@ Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport heb
 # Over het project
 
 # Gebouwd met
+Deze applicatie is gebouwd met:
+- [EJS](https://ejs.co/)
+- 
 
 ## Getting started: Installation ##
 Om de applicatie te laten functioneren dienen er een paar stappen uitgevoerd te worden.
