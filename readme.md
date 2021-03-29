@@ -5,7 +5,6 @@ Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport heb
 - [Over het project](https://github.com/DeefDeMeef/blok-tech-team4#over-het-project)
 - [Gebouwd met](https://github.com/DeefDeMeef/blok-tech-team4#gebouwd-met)
 - [Getting started](https://github.com/DeefDeMeef/blok-tech-team4#getting-started-installation)
-- [Bronnen](https://github.com/DeefDeMeef/blok-tech-team4#bronnen)
 
 # Over het project
 Sportify is de app om in contact te komen met mensen die een interesse hebben in dezelfde sport als jij. Sportify laat je chatten in een kamer met mensen met dezelfde passie. Maak een profiel aan, ga opzoek naar mensen en chat erop los.
@@ -69,7 +68,3 @@ user@DESKTOP-1111111:~/$ nodemon start
 [nodemon] starting node start index.js
 link naar server: http://localhost:8000
 ```
-
-# Bronnen
-- bron 1
-- bron 2
