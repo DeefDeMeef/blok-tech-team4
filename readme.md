@@ -9,8 +9,9 @@ Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport heb
 
 # Gebouwd met
 Deze applicatie is gebouwd met:
+- [NodeJS](https://nodejs.org/en/)
 - [EJS](https://ejs.co/)
-- 
+- [MongoDB](https://www.mongodb.com/)
 
 ## Getting started: Installation ##
 Om de applicatie te laten functioneren dienen er een paar stappen uitgevoerd te worden.
