@@ -1,3 +1,14 @@
+# Sport Matching
+Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport hebben.
+
+# Fast Travel
+- link
+- link
+
+# Over het project
+
+# Gebouwd met
+
 ## Getting started: Installation ##
 Om de applicatie te laten functioneren dienen er een paar stappen uitgevoerd te worden.
 
@@ -50,3 +61,7 @@ user@DESKTOP-1111111:~/$ nodemon start
 [nodemon] starting node start server.js
 link naar server: http://localhost:8000
 ```
+
+# Bronnen
+- bron 1
+- bron 2
