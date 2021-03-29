@@ -1,19 +1,23 @@
-# Sport Matching
+# Sportify
 Praat over je favoriete sport met mensen die dezelfde liefde voor deze sport hebben.
 
 # Fast Travel
-- link
-- link
+- https://github.com/DeefDeMeef/blok-tech-team4#over-het-project
+- https://github.com/DeefDeMeef/blok-tech-team4#gebouwd-met
+- https://github.com/DeefDeMeef/blok-tech-team4#getting-started-installation
+- https://github.com/DeefDeMeef/blok-tech-team4#bronnen
 
 # Over het project
+Sportify is de app om in contact te komen met mensen die een interesse hebben in dezelfde sport als jij. Sportify laat je chatten in een kamer met mensen met dezelfde passie. Maak een profiel aan, ga opzoek naar mensen en chat erop los.
 
 # Gebouwd met
-Deze applicatie is gebouwd met:
-- [NodeJS](https://nodejs.org/en/)
-- [EJS](https://ejs.co/)
-- [MongoDB](https://www.mongodb.com/)
+- Node.js
+- MongoDB database
+- EJS Templating
+- NPM packages
+- SCSS Styling
 
-## Getting started: Installation ##
+# Getting started: Installation
 Om de applicatie te laten functioneren dienen er een paar stappen uitgevoerd te worden.
 
 ### Git
@@ -47,7 +51,7 @@ Voorbeeld output:
 
 Kopieer deze repo door de volgende command in je terminal uit te voeren: 
 ```
-git clone https://github.com/DeefDeMeef/blok-tech.git
+git clone https://github.com/DeefDeMeef/blok-tech-team4.git
 ```
 
 Om de applicatie te starten voer je de volgende comment in de terminal (Bash): 
@@ -62,7 +66,7 @@ user@DESKTOP-1111111:~/$ nodemon start
 [nodemon] to restart at any time, enter rs
 [nodemon] watching path(s): *.*
 [nodemon] watching extensions: js,mjs,json
-[nodemon] starting node start server.js
+[nodemon] starting node start index.js
 link naar server: http://localhost:8000
 ```
 
