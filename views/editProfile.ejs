@@ -1,8 +1,11 @@
 <%- include('partials/head') %>
-    <header>Bewerk je profiel</header>
+<body>
+  <section>
+    <h1>Bewerk je profiel</h1>
     <p><%=profile._id%></p>
+  </section>
     <main>
-      <form
+      <form class="editprofile"
         action="/profile/<%=profile._id%>"
         method="POST"
         enctype="multipart/form-data"
@@ -54,6 +57,16 @@
         </div>
         <button>Opslaan</button>
       </form>
+
+
+<!-- form voor verwijderen profiel
+      <form  action="/login"
+      method="DELETE">
+        <label for="name">delete profile</label><br>
+        <input type="text" id="deleteProfile" name="name"><br>
+        <option value="deleteProfile">Profiel verwijderen</option>
+      </form>
+
     </main>
   </body>
-
+-->
