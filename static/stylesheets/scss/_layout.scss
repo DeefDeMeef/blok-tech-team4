@@ -49,7 +49,7 @@ body {
 
 
  /* Forms */
- form {
+ form{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -190,18 +190,44 @@ button:enabled {
 
 /* profile.ejs */
 section.profile{
-    position:absolute;
-    display:flex;
-    flex-wrap:wrap;
-    margin-top:10em;
-    p{
-        flex-grow: 2;
+    margin-top:3em;
+    h1{
+      border-top:.1em solid white;
+      padding-top:1em;
+      margin:0;
+      padding-bottom:.5em;
+     
     }
+   ul{
+       margin-top:10em;
+       p:first-child{
+        display:none; 
+
+    }
+    
+    p{
+        margin-top:unset;
+        margin:0em 1.5em;
+    }
+    p:nth-child(2){
+text-transform: uppercase;
+font-family: Futura;
+padding-top:3em;
+    }
+    p:nth-child(5){
+        background-color: rgba(255, 255, 255, 0.2);
+        padding:1em;
+        margin-top:1em;
+        border-radius:$radius-border;
+   
+    }
+
+   }
     
 }
 img[alt="profilepic"]{
     position: absolute;
-        top: 25vw;
+        top: 30vw;
         margin: 0 auto;
         margin-bottom: 2em;
         width: 40%;
@@ -267,14 +293,28 @@ form.editprofile{
 /* filterSports.ejs */
  .sportsList{
     padding:1em;  
+  
+    
+    ul{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: space-between;
+    }
     li{
         justify-content: flex-start;
     }
  }
 
- .filterSports form{
-     flex:none;
- }
+.filterSports{
+    margin:1.5em;
+}
+
+ul.match{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+
 
 
 
@@ -286,23 +326,71 @@ nav{
     bottom:0;
     position:fixed;
     width:100%;
+    z-index:10;
     font:{ family: Futura Light;
+        
     }
 
     ul{
     display:flex;
     justify-content: space-evenly;
+    background-color:black;
     
+    li{
+        padding:1em;
+        color:white;
+        letter-spacing: .2em;
     }
-        li{
-            padding:1em;
-            color:white;
-        }
-        a{
-            color:white;
-           
-        }
-     
+ }
+
+    }
+        
+    nav a {
+            background-color: $enabled-color;
+            color: $text-color;
+            &:hover {
+                background-color: $hover-color;
+                border: $hover-border;
+            }
+        
+            &:active {
+                background-color: $active-color;
+            }
+        
+            &:focus {
+                background-color: $focus-color;
+                box-shadow: $focus-shadow;
+            }
+        
+            &:disabled {
+                background-color: $disabled-color;
+            }
+      } 
+    
+
+    
+    
+    
+
+footer{
+    position:fixed;
+    top:0;
+ width:100%;
+ padding:1em 0em;
+    background-color:transparent;
+
+    ul{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    a{
+        color:white;
+        font-family:Futura Light;
+        letter-spacing:.1em;
+        padding:0 1em;
+    }
+   
 }
 
 
@@ -310,7 +398,18 @@ nav{
 
 
 
-
+/* chat.ejs */
+form[id="send-container"]{
+    flex-wrap:unset;
+   margin-top:2em;
+   position:fixed;
+   bottom:0;
+}
+input[id="msg"]{
+    margin:0;
+    border-radius:unset;
+   
+}
 .message{
     border-style: 1px solid white;
     background-color:white;
@@ -320,9 +419,41 @@ nav{
     border-radius:$radius-border;
     margin:0 auto;
  }
+ p[id="user"]{
+     font-family: Futura;
+     text-transform: uppercase;
+ }
+
+ p[id=room]{
+     margin:0;
+
+ }
+
+ button[id="leave-btn"]{
+     background-color:transparent;
+     padding:1.5em 0em;
+     margin:0;
+ }
+
+ button[id=send-btn]{
+     width:unset;
+     border-radius:unset;
+ }
+ 
 
 /* sendMail.ejs */
 .sendMail form{
     margin:1.5em;
+}
+
+.sendMail section{
+    margin:1.5em;
+    input{
+        margin-bottom:2em;
+    }
+}
+
+.sendMail h3{
+    padding-top:2em;
 }
  

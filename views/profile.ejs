@@ -4,13 +4,14 @@
     <main>
     <section class="profile">
       <h1>profiel</h1>
-      <a href="/edit/<%= profile._id%>">Bewerken</a>
+      <ul>
       <p><%= profile._id%></p>
       <p><%=profile.name%></p>
-      <p><%=profile.sport%></p>
+      <p>houdt van <%=profile.sport%></p>
       <p><%=profile.sex%></p>
       <p><%=profile.bio%></p>
       <img src="/uploads/<%=profile.upload%>" alt="profilepic" />
+    </ul>
     </section>
     <section>
       <h3>Mensen die je geliked hebt</h3>
