@@ -1,38 +1,12 @@
 const User = require(`../models/user`);
+const formatMessage = require('../controllers/util/message')
+const { userJoin, getCurrentUser, userLeave } = require('../controllers/util/user')
 const io = require(`socket.io`)(4000, {
-    cors: {
-      origin: `*`,
-    },
-  });
+  cors: {
+    origin: `*`,
+  },
+});
 
-  function formatMessage(username, text) {
-    return {
-      username,
-      text
-    };
-  }
-
-  const users = []
-
-  function userJoin(id, username, room) {
-    const user = { id, username, room };
-    users.push(user)
-    console.log(users)
-    return user
-  }
-
-  function getCurrentUser(id) {
-    console.log(users)
-    return users.find(user => user.id === id)
-  }
-
-  function userLeave(id) {
-    const index = users.findIndex(user => user.id === id)
-    if (index !== -1) {
-      return users.splice(index, 1)[0]
-    }
-    console.log(users)
-  }
 
 exports.chatWindow = async (req, res) => {
   const loggedUser = await User.findOne({ email: req.session.userEmail });
@@ -42,8 +16,9 @@ exports.chatWindow = async (req, res) => {
         name: loggedUser.profile.name,
         room: loggedUser.profile.sport,
     })
+  }
 
-    const bot = 'R2D2: '
+    const bot = 'R2D2'
   
     io.on('connection', socket => {
       socket.on('joinRoom', ({ username, roomUser }) => {
@@ -71,7 +46,7 @@ exports.chatWindow = async (req, res) => {
       })
     })
   
-  }
+  
 
       // io.on(`connection`, (socket) => {
 
