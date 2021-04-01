@@ -26,7 +26,7 @@ router
   
 
 router.post(
-  `profile/create`,
+  `/profile/create`,
   upload.single(`upload`),
   profileController.postCreateProfile
 );
