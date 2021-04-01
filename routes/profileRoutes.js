@@ -21,6 +21,7 @@ router
   .get(`/profile/create`, profileController.getCreateProfile)
   .get(`/profile/:profileId`, profileController.getProfile)
   .get(`/edit/:profileId`, profileController.editProfile)
+  //Toegevoegd
   .get('/profile/delete/:profileId', profileController.deleteProfile);
   
 
@@ -36,6 +37,7 @@ router.post(
   profileController.updateProfile
 );
 
+//Toegevoegd
 router.post(
   '/profile/delete/:profileId', profileController.deleteProfile);
 
