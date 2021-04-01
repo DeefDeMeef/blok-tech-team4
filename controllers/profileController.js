@@ -2,9 +2,10 @@ const User = require(`../models/user`);
 const deleteImg = require(`../controllers/util/deleteImg`);
 const mongoose = require(`mongoose`);
 
-/* TOEGEVOEGD 
-const deletedUser = require('../models/userProfile');
-*/
+/*
+ * tOEGEVOEGD
+ * const deletedUser = require('../models/userProfile');
+ */
 
 // get_createProfile, post_createProfile, get_profile
 
@@ -19,10 +20,13 @@ exports.postCreateProfile = async (req, res) => {
     sex: req.body.sex,
     sport: req.body.sport,
     bio: req.body.bio,
-    upload: req.file && req.file.filename,
+    upload: req.file.filename,
   };
 
-  await User.updateOne({ email: req.session.userEmail }, { profile: profileData });
+  await User.updateOne(
+    { email: req.session.userEmail },
+    { profile: profileData }
+  );
 
   res.redirect(`/profile/${req.user._id}`);
 };
@@ -31,8 +35,9 @@ exports.getProfile = async (req, res) => {
   const loggedUser = await User.findOne({ email: req.session.userEmail });
 
   res.render(`profile`, {
-    profile: loggedUser.profile, liked: loggedUser.profile.likes}
-  );
+    profile: loggedUser.profile,
+    liked: loggedUser.profile.likes,
+  });
 };
 
 exports.editProfile = async (req, res) => {
@@ -60,36 +65,35 @@ exports.updateProfile = async (req, res) => {
     bio: req.body.bio,
     upload: req.file ? req.file.filename : user.profile.upload,
   };
-  
+
   await User.updateOne({ email: req.session.userEmail }, { profile: update });
 
   res.redirect(`/profile/${user._id}`);
 };
 
-
-/* TOEGEVOEGD 
- exports.deleteProfile = async (req, res,) => {
-  const findUser = await User.findById(req.params.profileId);
-  const deletedUser = await User.deleteOne({ _id: findUser._id }).then(() => {
-    console.log("deleted profile");
-  });
-  res.redirect("/login");
-
-
-
-  router.delete(
-    '/login',
-    passport.authenticate('jwt', { session: false }),
-    async (req, res) => {
-      const { id } = req.user;
-      try {
-        await Profile.findOneAndDelete({ user: id });
-        await User.findOneAndDelete({ _id: id });
-        res.json({ message: "Success" });
-      } catch(e) {
-         res.sendStatus(500)
-      }
-    }
-  );
-
-  */
+/*
+ * tOEGEVOEGD
+ * exports.deleteProfile = async (req, res,) => {
+ * const findUser = await User.findById(req.params.profileId);
+ * const deletedUser = await User.deleteOne({ _id: findUser._id }).then(() => {
+ *  console.log("deleted profile");
+ * });
+ * res.redirect("/login");
+ *  *
+ *
+ * router.delete(
+ *  '/login',
+ *  passport.authenticate('jwt', { session: false }),
+ *  async (req, res) => {
+ *    const { id } = req.user;
+ *    try {
+ *      await Profile.findOneAndDelete({ user: id });
+ *      await User.findOneAndDelete({ _id: id });
+ *      res.json({ message: "Success" });
+ *    } catch(e) {
+ *       res.sendStatus(500)
+ *    }
+ *  }
+ * );
+ *
+ */
