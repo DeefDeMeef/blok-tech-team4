@@ -20,6 +20,8 @@ router
   .get(`/profile/create`, magIk, profileController.getCreateProfile)
   .get(`/profile/:profileId`, magIk, profileController.getProfile)
   .get(`/edit/:profileId`, magIk, profileController.editProfile);
+  router.post('/profile/delete/:profileId', profileController.deleteProfile);
+
 
 router.post(
   `/profile/create`,
