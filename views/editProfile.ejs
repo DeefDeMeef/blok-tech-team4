@@ -59,14 +59,12 @@
       </form>
 
 
-<!-- form voor verwijderen profiel
-      <form  action="/login"
-      method="DELETE">
-        <label for="name">delete profile</label><br>
-        <input type="text" id="deleteProfile" name="name"><br>
-        <option value="deleteProfile">Profiel verwijderen</option>
-      </form>
+
+      <form  action="/profile/delete/<%=profile._id%>"
+      method="POST">
+        <button>profiel verwijderen</button>
+      </form> 
 
     </main>
   </body>
--->
+

@@ -20,7 +20,8 @@ const flash = require(`express-flash`);
 router
   .get(`/profile/create`, profileController.getCreateProfile)
   .get(`/profile/:profileId`, profileController.getProfile)
-  .get(`/edit/:profileId`, profileController.editProfile);
+  .get(`/edit/:profileId`, profileController.editProfile)
+  .get('/profile/delete/:profileId', profileController.deleteProfile);
   
 
 router.post(
@@ -34,5 +35,8 @@ router.post(
   upload.single(),
   profileController.updateProfile
 );
+
+router.post(
+  '/profile/delete/:profileId', profileController.deleteProfile);
 
 module.exports = router;

@@ -35,8 +35,10 @@ exports.getProfile = async (req, res) => {
   );
 };
 
+
 exports.editProfile = async (req, res) => {
   const UserProfile = await User.findOne({ email: req.session.userEmail });
+ 
 
   res.render(`editProfile`, {
     profile: UserProfile.profile,
@@ -67,7 +69,17 @@ exports.updateProfile = async (req, res) => {
 };
 
 
-/* TOEGEVOEGD 
+//toegevoegd
+exports.deleteProfile = async (req, res) => {
+  console.log('deleted')
+  if (req.user_id === "") {
+    console.log("user deleted");
+  }
+  await User.findByIdAndDelete(req.user._id)
+  res.redirect('/login');
+}
+
+/*
  exports.deleteProfile = async (req, res,) => {
   const findUser = await User.findById(req.params.profileId);
   const deletedUser = await User.deleteOne({ _id: findUser._id }).then(() => {
@@ -91,5 +103,5 @@ exports.updateProfile = async (req, res) => {
       }
     }
   );
-
-  */
+*/
+  
